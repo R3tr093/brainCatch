@@ -51,7 +51,7 @@ app.get("/api/users", function(req, res) {
   });
 });
 
-app.post("/api/contacts", function(req, res) {
+app.post("/api/users", function(req, res) {
   var newUser = req.body;
   newUser.createDate = new Date();
 
