@@ -59,8 +59,8 @@ app.get("/api/users", function(req, res) {
 
 
 app.get("/api/users/:id", function(req, res) {
-  db.collection(USERS_COLLECTION).find({"_id": {
-    "$oid": "5dada81463215b0017783454"
+  db.collection(USERS_COLLECTION).find({_id: {
+    $oid: "5dada81463215b0017783454"
 }}).toArray(function(err, docs) {
     if (err) {
       handleError(res, err.message, "Failed to get contacts.");
@@ -75,7 +75,9 @@ app.get("/api/users/:id", function(req, res) {
 // Road for post a new users in db
 
 app.post("/api/users", function(req, res) {
+  
   var newUser = req.body;
+  
   newUser.createDate = new Date();
   
   let hash = bcrypt.hashSync(req.body.password, 10);
@@ -83,13 +85,20 @@ app.post("/api/users", function(req, res) {
   newUser.hash = hash;
   
 
-  if (!req.body.name) {
+  if (!req.body.name)
+  {
     handleError(res, "Invalid user input", "Must provide a name.", 400);
-  } else {
+  }
+   else
+    {
     db.collection(USERS_COLLECTION).insertOne(newUser, function(err, doc) {
-      if (err) {
+      
+      if (err) 
+      {
         handleError(res, err.message, "Failed to create new contact.");
-      } else {
+      }
+       else
+      {
         res.status(201).json(doc.ops[0]);
       }
     });
