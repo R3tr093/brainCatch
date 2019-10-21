@@ -100,8 +100,19 @@ export class HomeComponent implements OnInit {
   logUser(){
      let name = String((<HTMLInputElement>document.getElementById("authName")).value);
      let password = String((<HTMLInputElement>document.getElementById("authPassword")).value);
+    
+    if(name.length > 5)
+    {
+      this.userService.getUser(name);
+    }
 
-     this.userService.getUser(name);
+    else
+    {
+      document.getElementById('authReport').textContent = "";
+      document.getElementById('authReport').textContent = "Information de connexion invalide ! ";
+    }
+
+     
      
   }
 
