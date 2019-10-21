@@ -30,7 +30,7 @@
     align-items: center;
     align-content: center;
     flex-wrap: wrap;
-    width: 80vw;
+    width: 100vw;
     margin: 0 auto;
     min-height: 100vh;
     background-image: url('../../assets/logo.png');
@@ -39,8 +39,14 @@
     background-size: 200px 200px;
   }
 
+  #linkWrapper
+  {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
   .btn {
-    flex: 1 1 auto;
     margin: 10px;
     padding: 30px;
     cursor: pointer;
@@ -52,7 +58,10 @@
     text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
     box-shadow: 0 0 20px #eee;
     border-radius: 10px;
-    width: 50vh
+    min-width: 300px;
+    position: relative;
+    left: -20px;
+    width: auto;
     
    }
   
@@ -74,4 +83,34 @@
     background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
   }
 
-  
+  #quote
+  {
+    text-align: center;
+    width: 300%;
+    position: relative;
+    left: -100%;
+    margin-top: 60px;
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
+  }
+
+  #gitIcon
+  {
+    height: 75px;
+    width: 75px;
+    position: relative;
+    top: -10vh;
+    cursor: pointer;
+   
+  }
+
+
+  // Toggle Elts forms 
+
+.forms
+{
+  position: absolute;
+  height: 50vh;
+  width: 60vh;
+  border: 1px solid black;
+  display: none;
+}  

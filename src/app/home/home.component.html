@@ -11,17 +11,44 @@
       
 
         <a routerLink="/Demo" routerLinkActive="active" class="btn btn-1 slideInLeft animated" title="Essayez l'application sans vous enregistrez.">Démo</a>
-        <a routerLink="/Menu" routerLinkActive="active" class="btn btn-2 slideInRight animated" title="Entrez vos identifiants pour vous connectez.">Connexion</a>
-        <a class="btn btn-3 slideInLeft animated" title="S'inscire et utiliser l'application complète.">Inscription</a>
+        <a (click)="displayLogIn()" class="btn btn-2 slideInRight animated" title="Entrez vos identifiants pour vous connectez.">Connexion</a>
+        <a (click)="displayAuth()"  class="btn btn-3 slideInLeft animated" title="S'inscrire et utiliser l'application complète.">Inscription</a>
+
+        <p id="quote"><em>Par ce que vos facultés mentales ont parfois besoin d'une mise à jour.</em></p>
+      
 
        </div>
+
+       <div class="col-6" id="authForm" class="animated forms">
+      
+
+        <button (click)="displayAuth()" id="closeAuth">X</button>
+
+       </div>
+
+       <div class="col-6" id="logInForm" class="animated forms">
+      
+
+        <button (click)="displayLogIn()" id="closeLogIn">X</button>
+
+        <a routerLink="/Menu" routerLinkActive="active">Menu</a>
+
+       </div>
+
+      
       
        <div class="col">
        
          <aside></aside>
        
         </div>
+
+        
     </div>
  </div>  
  
+ 
 <aside class="slideInRight animated" id="sideRight"></aside> 
+
+
+<a href="https://github.com/R3tr093/brainCatch" target="_blank"><img class="rounded mx-auto d-block" id="gitIcon" src="../../assets/gitIcon.png"></a>a
