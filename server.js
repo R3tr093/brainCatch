@@ -72,9 +72,18 @@ app.get("/api/users/:id", function(req, res) {
     if (err) {
       handleError(res, err.message, "Failed to get contacts.");
     } else {
-      res.status(200).json(docs);
-      res.status(500).send('Teapot');
-      res.send('Prout !')
+
+
+      if(bcrypt.compareSync(docs.hash, hash)) {
+        res.status(200).json(docs);
+       } else {
+        res.status(500).send('Teapot');
+        res.send('Prout !')
+       }
+
+
+      
+     
     }
   });
 });
