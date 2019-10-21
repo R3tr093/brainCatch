@@ -23,7 +23,7 @@ export class UsersServicesService {
       );
   }
 
-  postUser(val){
+  postUser(name, mail){
     return this.http.post('https://braincatch.herokuapp.com/api/users', val).subscribe(
         value => {
           console.log(value)
