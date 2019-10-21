@@ -13,11 +13,6 @@ const saltRounds = 10;
 const myPlaintextPassword = 's0/\/\P4$$w0rD';
 const someOtherPlaintextPassword = 'not_bacon';
 
-bcrypt.genSalt(saltRounds, function(err, salt) {
-  bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
-      console.log(hash)
-  });
-});
 
 app.use(bodyParser.json());
 
@@ -63,7 +58,18 @@ app.get("/api/users", function(req, res) {
 
 app.post("/api/users", function(req, res) {
   var newUser = req.body;
+  var myHash = "non";
   newUser.createDate = new Date();
+
+
+bcrypt.genSalt(saltRounds, function(err, salt) {
+  bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
+      myHash = hash
+  });
+});
+
+
+  newUser.hashpass = myHash;
 
   if (!req.body.name) {
     handleError(res, "Invalid user input", "Must provide a name.", 400);
