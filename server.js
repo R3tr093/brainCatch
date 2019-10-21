@@ -74,7 +74,8 @@ app.get("/api/users/:id", function(req, res) {
     } else {
   
       let result = docs;
-      res.status(200).send(result);
+      result = result.json(result);
+      res.status(200).json(result.hash);
 
 
     }
