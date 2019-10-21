@@ -74,8 +74,7 @@ app.get("/api/users/:name", function(req, res) {
     } else {
       let resolve = bcrypt.compareSync(status.hash, hash);
       console.log(resolve)
-      res.status(200).send('<p>done</p>');
-      res.status(500).send("I'm a teapot").
+      res.status(200).json(docs);
       
     }
   });
