@@ -36,7 +36,6 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, client) {
   // Initialize the app.
   var server = app.listen(process.env.PORT, function () {
     var port = server.address().port;
-    console.log("App now running on port", port);
   });
 });
 
@@ -45,6 +44,7 @@ function handleError(res, reason, message, code) {
   res.status(code || 500).json({"error": message});
 }
 
+// Road to get all users infos
 
 app.get("/api/users", function(req, res) {
   db.collection(USERS_COLLECTION).find({}).toArray(function(err, docs) {
@@ -56,10 +56,26 @@ app.get("/api/users", function(req, res) {
   });
 });
 
+app.get("/api/users/:id", function(req, res) {
+  db.collection(USERS_COLLECTION).find({name : "mLab Support"}).toArray(function(err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get contacts.");
+    } else {
+      res.status(200).json(docs);
+    }
+  });
+});
+
+
+
+// Road for post a new users in db
+
 app.post("/api/users", function(req, res) {
   var newUser = req.body;
   newUser.createDate = new Date();
+  
   let hash = bcrypt.hashSync(req.body.password, 10);
+
   newUser.hash = hash;
   
 
@@ -77,8 +93,9 @@ app.post("/api/users", function(req, res) {
 });
 
 
-app.get("/api/users/:id", function(req, res) {
-});
+
+
+
 
 app.put("/api/users/:id", function(req, res) {
 });
