@@ -59,7 +59,10 @@ app.get("/api/users", function(req, res) {
 
 
 app.get("/api/users/:id", function(req, res) {
-  db.collection(USERS_COLLECTION).find({name: "mLab Support"}).toArray(function(err, docs) {
+  
+  let param = String(req.params.id);
+
+  db.collection(USERS_COLLECTION).find({email: param}).toArray(function(err, docs) {
     if (err) {
       handleError(res, err.message, "Failed to get contacts.");
     } else {
