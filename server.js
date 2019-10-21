@@ -59,7 +59,7 @@ app.get("/api/users", function(req, res) {
 app.post("/api/users", function(req, res) {
   var newUser = req.body;
   newUser.createDate = new Date();
-  let hash = bcrypt.hashSync('myPassword', 10);
+  let hash = bcrypt.hashSync(req.body.password, 10);
   newUser.hash = hash;
   
 
