@@ -72,12 +72,7 @@ app.get("/api/users/:id", function(req, res) {
     if (err) {
       handleError(res, err.message, "Failed to get contacts.");
     } else {
-  
-      let result = docs;
-      result = result.json(result);
-      res.status(200).json(result.hash);
-
-
+      res.status(200).json(docs);
     }
   });
 });
