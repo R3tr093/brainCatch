@@ -62,11 +62,11 @@ app.get("/api/users", function(req, res) {
 });
 
 
-// -- > get an user selected by his ID.
+// -- > get an user selected by his name.
 
-app.get("/api/users/:id", function(req, res) {
+app.get("/api/users/:name", function(req, res) {
   
-  let param = String(req.params.id);
+  let param = String(req.params.name);
 
   db.collection(USERS_COLLECTION).find({name: param}).toArray(function(err, docs) {
     if (err) {
