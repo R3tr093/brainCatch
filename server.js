@@ -44,7 +44,12 @@ function handleError(res, reason, message, code) {
   res.status(code || 500).json({"error": message});
 }
 
-// Road to get all users infos
+
+
+
+/** ---- >  API ENDPOINTS  **/
+
+// -- > get all users infos
 
 app.get("/api/users", function(req, res) {
   db.collection(USERS_COLLECTION).find({}).toArray(function(err, docs) {
@@ -57,6 +62,7 @@ app.get("/api/users", function(req, res) {
 });
 
 
+// -- > get an user selected by his ID.
 
 app.get("/api/users/:id", function(req, res) {
   
@@ -73,7 +79,7 @@ app.get("/api/users/:id", function(req, res) {
 
 
 
-// Road for post a new users in db
+//  -- > Submit a new user in API
 
 app.post("/api/users", function(req, res) {
   
@@ -109,7 +115,7 @@ app.post("/api/users", function(req, res) {
 
 
 
-
+// -- > Placeholder put and delete request
 
 app.put("/api/users/:id", function(req, res) {
 });
