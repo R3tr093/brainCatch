@@ -18,9 +18,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-      this.userService.getUser();
+      //this.userService.getUser();
 
-     // this.userService.postUser({"name":"mLab Support", "email": "support@mlab.com"});
+     this.userService.postUser({"name":"mLab Support", "email": "support@mlab.com", "password": "password"});
   }
 
 }
