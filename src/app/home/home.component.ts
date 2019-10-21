@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
+
 import { UsersServicesService } from '../users-services.service';
 
 
@@ -32,7 +33,7 @@ export class HomeComponent implements OnInit {
 
      
 
-    this.userService.postUser(JSON.stringify(myData));
+    this.userService.postUser({"name":"mLab Support", "email": "support@mlab.com"});
   }
 
 }
