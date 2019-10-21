@@ -61,13 +61,21 @@ app.post("/api/users", function(req, res) {
   newUser.createDate = new Date();
 
 
-bcrypt.genSalt(saltRounds, function(err, salt) {
-  bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
-      newUser.hashpass = hash;
-  });
-});
+  async function hashedPassword(){
 
 
+    const hashedPassword = await new Promise((resolve, reject)=> {
+     
+      bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
+        newUser.hashpass = hash;
+        if (err) reject(err)
+        resolve(hash)
+      });
+    })
+      return hashedPassword
+  }
+
+  hashedPassword();
   
 
   if (!req.body.name) {
