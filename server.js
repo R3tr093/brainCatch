@@ -1,18 +1,28 @@
+
+// Env fundamentals dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
-
 var USERS_COLLECTION = "users";
-
 var app = express();
 
+// Hash dependencies
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const myPlaintextPassword = 's0/\/\P4$$w0rD';
+const someOtherPlaintextPassword = 'not_bacon';
 
+bcrypt.genSalt(saltRounds, function(err, salt) {
+  bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
+      console.log(hash)
+  });
+});
 
 app.use(bodyParser.json());
 
 
-// EDIT NAME
+
 var distDir = __dirname + "/dist/brainCatch";
 app.use(express.static(distDir));
 
