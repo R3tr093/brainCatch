@@ -62,7 +62,7 @@ app.get("/api/users/:id", function(req, res) {
   
   let param = String(req.params.id);
 
-  db.collection(USERS_COLLECTION).find({email: param}).toArray(function(err, docs) {
+  db.collection(USERS_COLLECTION).find({name: param}).toArray(function(err, docs) {
     if (err) {
       handleError(res, err.message, "Failed to get contacts.");
     } else {
