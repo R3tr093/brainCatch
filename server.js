@@ -74,7 +74,7 @@ app.get("/api/users/:name", function(req, res) {
     } else {
       let resolve = bcrypt.compareSync(status.hash, hash);
       console.log(resolve)
-      res.status(200).send(resolve);
+      res.status(200).send(docs);
       
     }
   });
