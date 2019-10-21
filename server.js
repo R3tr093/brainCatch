@@ -62,20 +62,17 @@ app.get("/api/users", function(req, res) {
 });
 
 
-// -- > get an user selected by his name.
+// -- > get an user selected by his ID.
 
-app.get("/api/users/:name", function(req, res) {
+app.get("/api/users/:id", function(req, res) {
   
-  let param = String(req.params.name);
+  let param = String(req.params.id);
 
   db.collection(USERS_COLLECTION).find({name: param}).toArray(function(err, docs) {
     if (err) {
       handleError(res, err.message, "Failed to get contacts.");
     } else {
-      let resolve = bcrypt.compareSync(status.hash, hash);
-      console.log(resolve)
       res.status(200).json(docs);
-      
     }
   });
 });
