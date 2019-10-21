@@ -58,18 +58,17 @@ app.get("/api/users", function(req, res) {
 
 app.post("/api/users", function(req, res) {
   var newUser = req.body;
-  var myHash = "non";
   newUser.createDate = new Date();
 
 
 bcrypt.genSalt(saltRounds, function(err, salt) {
   bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
-      myHash = hash
+      newUser.hashpass = hash;
   });
 });
 
 
-  newUser.hashpass = myHash;
+  
 
   if (!req.body.name) {
     handleError(res, "Invalid user input", "Must provide a name.", 400);
