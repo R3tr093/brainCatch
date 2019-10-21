@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
       //this.userService.getUser("mLab Support");
 
-     //this.userService.postUser({"name":"mLab Support", "email": "support@mlab.com", "password": "password"});
+     //this.userService.postUser({"name":"mLab Support", "password": "password"});
   }
 
   displayAuth()
@@ -95,6 +95,14 @@ export class HomeComponent implements OnInit {
     }
 
 
+  }
+
+  logUser(){
+     let name = String((<HTMLInputElement>document.getElementById("authName")).value);
+     let password = String((<HTMLInputElement>document.getElementById("authPassword")).value);
+
+     this.userService.getUser(name);
+     
   }
 
 }
