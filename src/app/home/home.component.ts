@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 
-import { UsersServicesService } from '../users-services.service';
+import { UsersServicesService } from '../services/users.service';
 
 
 @Component({
@@ -17,23 +17,10 @@ export class HomeComponent implements OnInit {
   constructor(private userService : UsersServicesService) { }
 
   ngOnInit() {
-    this.userService.getUser();
 
-    var myData = [
-      {
-          "name": "Bill",
-      },
-      {
-          "name": "Lisa",
-      },
-      {
-          "name": "Ant",
-      }
-      ]
+      this.userService.getUser();
 
-     
-
-    this.userService.postUser({"name":"mLab Support", "email": "support@mlab.com"});
+     // this.userService.postUser({"name":"mLab Support", "email": "support@mlab.com"});
   }
 
 }

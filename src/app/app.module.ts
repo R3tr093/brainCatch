@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
 
-import {UsersServicesService} from './users-services.service';
+import {UsersServicesService} from './services/users.service';
 
 const appRoutes: Routes = [
   { path: '',      component: HomeComponent},
