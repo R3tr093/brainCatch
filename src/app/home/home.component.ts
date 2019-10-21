@@ -71,4 +71,30 @@ export class HomeComponent implements OnInit {
    
   }
 
+  postUser(){
+
+    let name = String((<HTMLInputElement>document.getElementById("name")).value);
+    let password = String((<HTMLInputElement>document.getElementById("password")).value);
+    let password2 = String((<HTMLInputElement>document.getElementById("password2")).value);
+
+    if(password2 !== password)
+    {
+      document.getElementById('postReport').textContent = "";
+      document.getElementById('postReport').innerHTML = "Erreur :  Vos mots de passe ne sont pas identiques ! "
+    }
+
+    if(name.length <= 5)
+    {
+      document.getElementById('postReport').textContent = "";
+      document.getElementById('postReport').textContent = "Erreur : Votre nom d'utilisateur doit faire plus de 5 caractères.";
+    }
+
+    if(password2 === password && name.length > 5)
+    {
+      this.userService.postUser({"name": name, "password": password});
+    }
+
+
+  }
+
 }

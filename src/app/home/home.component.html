@@ -20,26 +20,42 @@
        </div>
 
        <div class="col-6" id="authForm" class="animated forms">
-      
+         
 
         <button (click)="displayAuth()" id="closeAuth">X</button>
 
        </div>
 
        <div class="col-6" id="logInForm" class="animated forms">
-      
 
-        <button (click)="displayLogIn()" id="closeLogIn">X</button>
+        <br>
+        <h2 class="formh2">Inscrivez-vous</h2>
+        <hr>
 
-        <a routerLink="/Menu" routerLinkActive="active">Menu</a>
+        <button (click)="displayLogIn()" id="closeLogIn" class="closureBtn">X</button>
 
-       </div>
+        <form>
+        <label>Nom d'utilisateur : </label>
+        <input type="name" minlength="5" id="name" maxlength="15" placeholder=" Tapez votre nom d'utilisateur..." required>
+        
+        <label>Mot de passe : </label>
+        <input type="password" id="password" minlength="5" maxlength="20" placeholder=" Tapez votre mot de passe...">
+
+        <label>Confirmer mot de passe : </label>
+        <input type="password" id="password2" minlength="5" maxlength="20" placeholder="Veuillez ressaissir votre mot de passe ...">
+
+        <button type="button" (click)="postUser()" class="confBtn">Valider</button>
+        
+        <p id="postReport" class="report"></p>
+    
+        </form>
+       
+        </div>
 
       
       
        <div class="col">
        
-         <aside></aside>
        
         </div>
 
