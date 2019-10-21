@@ -23,5 +23,17 @@ export class UsersServicesService {
       );
   }
 
+  postUser(){
+    return this.http.post('https://braincatch.herokuapp.com/api/users', 'name: paul').subscribe(
+        value => {
+          console.log(value)
+        },
+        error => {
+          console.log(error)
+        },
+        () => {
+        }
+      );
+  }
 }
 
