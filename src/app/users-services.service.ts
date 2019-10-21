@@ -23,8 +23,8 @@ export class UsersServicesService {
       );
   }
 
-  postUser(name, mail){
-    return this.http.post('https://braincatch.herokuapp.com/api/users', name, mail).subscribe(
+  postUser(name){
+    return this.http.post('https://braincatch.herokuapp.com/api/users', name).subscribe(
         value => {
           console.log(value)
         },

@@ -17,7 +17,22 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUser();
-    this.userService.postUser('name: Paul','email: test@mail.com');
+
+    var myData = [
+      {
+          "name": "Bill",
+      },
+      {
+          "name": "Lisa",
+      },
+      {
+          "name": "Ant",
+      }
+      ]
+
+     
+
+    this.userService.postUser(myData);
   }
 
 }
