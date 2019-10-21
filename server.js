@@ -59,23 +59,8 @@ app.get("/api/users", function(req, res) {
 app.post("/api/users", function(req, res) {
   var newUser = req.body;
   newUser.createDate = new Date();
-
-
-  async function hashedPassword(){
-
-
-    const hashedPassword = await new Promise((resolve, reject)=> {
-     
-      bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
-        newUser.hashpass = hash;
-        if (err) reject(err)
-        resolve(hash)
-      });
-    })
-      return hashedPassword
-  }
-
-  hashedPassword();
+  let hash = bcrypt.hashSync('myPassword', 10);
+  newUser.hash = hash;
   
 
   if (!req.body.name) {
