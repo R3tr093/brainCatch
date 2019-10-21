@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+  })
+};
 
 
 @Injectable({
@@ -8,7 +15,12 @@ import { Observable } from 'rxjs';
 })
 export class UsersServicesService {
 
+  
+
+
   constructor(private http: HttpClient) { }
+
+  
   
   getUser(){
     return this.http.get('https://braincatch.herokuapp.com/api/users').subscribe(
@@ -24,7 +36,7 @@ export class UsersServicesService {
   }
 
   postUser(name){
-    return this.http.post('https://braincatch.herokuapp.com/api/users', name).subscribe(
+    return this.http.post('https://braincatch.herokuapp.com/api/users', name, httpOptions).subscribe(
         value => {
           console.log(value)
         },

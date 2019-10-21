@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
      
 
-    this.userService.postUser(myData);
+    this.userService.postUser(JSON.stringify(myData));
   }
 
 }
