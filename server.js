@@ -64,15 +64,10 @@ app.get("/api/users", function(req, res) {
 
 // -- > get an user selected by his ID.
 
-app.get("/api/users/:id/:pass", function(req, res) {
+app.get("/api/users/:id", function(req, res) {
   
   let param = String(req.params.id);
-  let password = String(req.params.pass)
 
-
-  // -> Find a way to export result of decrypt 
-
-  // Then we can try to  resolve this way in front-end, or just try to look at how use the docs object in the front-end 
   
   db.collection(USERS_COLLECTION).find({name: param}).toArray(function(err, docs) {
     
@@ -84,23 +79,10 @@ app.get("/api/users/:id/:pass", function(req, res) {
     
     // Compare hash.
     else 
-    {
-
-      if(bcrypt.compareSync(password, docs[0].password))
-      {
-        // Passwords match
-        res.status(200).json(docs);
-      } 
-
-      else
-      {
-        res.send({ report: 'Password not match.' });
-      }
-      
-     
-      
-    }
-  });
+     {
+        res.status(200).json(docs);      
+     }
+   });
 });
 
 
@@ -119,7 +101,7 @@ app.post("/api/users/logIn", function(req, res) {
     handleError(res, "Invalid user input", "Must provide a password.", 400);
   }
 
-  db.collection(USERS_COLLECTION).find({name: param}).toArray(function(err, docs) {
+    db.collection(USERS_COLLECTION).find({name: param}).toArray(function(err, docs) {
     
     // Credentials not found in the DB.
     if (err) 

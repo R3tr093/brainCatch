@@ -56,8 +56,8 @@ export class UsersServicesService {
       );
   }
 
-  logInUser(data){
-    return this.http.get('https://braincatch.herokuapp.com/api/users/logIn').subscribe(
+   logInUser(data){
+    return this.http.post('https://braincatch.herokuapp.com/api/users/logIn', data, httpOptions).subscribe(
         value => {
           console.log(value)
           this.userData = value;
