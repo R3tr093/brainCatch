@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class UsersServicesService {
 
-  
+  userData : any;
 
 
   constructor(private http: HttpClient) { }
@@ -26,8 +26,8 @@ export class UsersServicesService {
     return this.http.get('https://braincatch.herokuapp.com/api/users/' + param + '/' +  password).subscribe(
         value => {
           console.log(value)
-          //let test = value;
-          //console.log(test[0].hash)
+          this.userData(value)
+
         },
         error => {
           console.log(error)
