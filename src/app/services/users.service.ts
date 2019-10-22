@@ -77,6 +77,9 @@ export class UsersServicesService {
 
 
   logInUser(data){
+
+    this.isLogged = false;
+
     return this.http.post('https://braincatch.herokuapp.com/api/users/logIn', data, httpOptions).subscribe(
         value => {
           console.log(value)
@@ -85,7 +88,6 @@ export class UsersServicesService {
         },
         error => {
           console.log(error)
-          this.isLogged = false;
         },
         () => {
         }
