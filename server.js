@@ -93,7 +93,7 @@ app.get("/api/users/:id", function(req, res) {
       
       else
        {
-        res.redirect('/');
+        res.send('ok')
        }
       
     }
