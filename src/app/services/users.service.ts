@@ -16,16 +16,30 @@ const httpOptions = {
 export class UsersServicesService {
 
   userData : any;
+  usedName : any;
   isRegistered : boolean = false;
 
 
 
   constructor(private http: HttpClient) { }
 
+  getUsers(){
+    return this.http.get('https://braincatch.herokuapp.com/api/users/').subscribe(
+        value => {
+          console.log(value)
+          this.usedName = value;
+
+        },
+        error => {
+          console.log(error)
+        },
+        () => {
+        }
+      );
+  }
   
-  
-  getUser(param, password){
-    return this.http.get('https://braincatch.herokuapp.com/api/users/' + param + '/' + password).subscribe(
+  getUser(param){
+    return this.http.get('https://braincatch.herokuapp.com/api/users/' + param).subscribe(
         value => {
           console.log(value)
           this.userData = value;
@@ -43,6 +57,7 @@ export class UsersServicesService {
     return this.http.post('https://braincatch.herokuapp.com/api/users', name, httpOptions).subscribe(
         value => {
           this.isRegistered = true;
+          this.userData = value;
         },
         error => {
           console.log(error)
