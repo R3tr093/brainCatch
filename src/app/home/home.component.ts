@@ -96,8 +96,6 @@ export class HomeComponent implements OnInit {
          }
       }
 
-    this.userService.usedName = [];  
-
 
     if(nameUsed)
     {
