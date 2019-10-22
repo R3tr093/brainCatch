@@ -115,12 +115,16 @@ app.post("/api/users", function(req, res) {
   
   let hash = bcrypt.hashSync(req.body.password, 10);
 
-  newUser.hash = hash;
+  req.body.password = hash;
   
 
   if (!req.body.name)
   {
     handleError(res, "Invalid user input", "Must provide a name.", 400);
+  }
+  if (!req.body.name)
+  {
+    handleError(res, "Invalid user input", "Must provide a password.", 400);
   }
    else
     {
