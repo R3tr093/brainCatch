@@ -54,7 +54,7 @@
     text-transform: uppercase;
     transition: 0.5s;
     background-size: 200% auto;
-    color: white;
+    color: white !important;
     text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
     box-shadow: 0 0 20px #eee;
     border-radius: 10px;
@@ -76,11 +76,11 @@
   }
   
   .btn-2 {
-    background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+    background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
   }
   
   .btn-3 {
-    background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+    background-image: linear-gradient(to right, #fbc2eb 0%,  cornflowerblue 51%, #fbc2eb 100%);
   }
 
   #quote

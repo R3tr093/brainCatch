@@ -68,9 +68,14 @@ app.get("/api/users/:id", function(req, res) {
   
   let param = String(req.params.id);
 
+
+  // -> Find a way to export result of decrypt 
+
+  // Then we can try to  resolve this way in front-end, or just try to look at how use the docs object in the front-end 
+  
   db.collection(USERS_COLLECTION).find({name: param}).toArray(function(err, docs) {
     if (err) {
-      handleError(res, err.message, "Failed to get contacts.");
+      handleError(res, err.message, "Failed to get user credentials...");
     } else {
       res.status(200).json(docs);
     }
