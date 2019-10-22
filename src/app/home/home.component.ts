@@ -197,7 +197,7 @@ export class HomeComponent implements OnInit {
         document.getElementById('authReport').textContent = "";
         document.getElementById('authReport').textContent = " Informations de connexion invalide ! "
 
-        console.log(this.userData.report);
+        console.log(this.userService.userData.report);
       }
 
 
