@@ -198,6 +198,23 @@ export class HomeComponent implements OnInit {
         document.getElementById('authReport').textContent = " Informations de connexion invalide ! "
 
         console.log(this.userService.userData.report);
+
+        if(this.userService.userData.report === "Password not match.")
+        {
+          document.getElementById('authReport').textContent = "";
+          document.getElementById('authReport').textContent = "Mot de passe incorrect.";  
+        }
+
+        if(this.userService.userData.report === "User not registered")
+        {
+          document.getElementById('authReport').textContent = "";
+          document.getElementById('authReport').textContent = "Nom d'utilisateur incorrect.";  
+        }
+
+        if(this.userService.userData.name)
+        {
+          console.log('Redirect to the app'); 
+        }
       }
 
 
