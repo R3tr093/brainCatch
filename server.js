@@ -105,7 +105,7 @@ app.post("/api/users/logIn", function(req, res) {
       handleError(res, err.message, "Failed to get user credentials...");
     } 
     
-    // Compare hash.
+    // Compare hash..
     else 
     {
 
