@@ -101,7 +101,7 @@ app.post("/api/users/logIn", function(req, res) {
     handleError(res, "Invalid user input", "Must provide a password.", 400);
   }
 
-    db.collection(USERS_COLLECTION).find({name: param}).toArray(function(err, docs) {
+    db.collection(USERS_COLLECTION).find({name: req.body.name}).toArray(function(err, docs) {
     
     // Credentials not found in the DB.
     if (err) 

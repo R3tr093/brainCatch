@@ -43,9 +43,6 @@ export class UsersServicesService {
     return this.http.post('https://braincatch.herokuapp.com/api/users', name, httpOptions).subscribe(
         value => {
           this.isRegistered = true;
-
-          
-      
         },
         error => {
           console.log(error)
@@ -56,12 +53,11 @@ export class UsersServicesService {
       );
   }
 
-   logInUser(data){
+  logInUser(data){
     return this.http.post('https://braincatch.herokuapp.com/api/users/logIn', data, httpOptions).subscribe(
         value => {
           console.log(value)
           this.userData = value;
-
         },
         error => {
           console.log(error)
