@@ -98,27 +98,31 @@ export class HomeComponent implements OnInit {
 
       function getReport(){
 
-        if(this.userService.isRegistered)
+
+        if(this.userService.isRegistered !== undefined)
         {
-          report = "Inscription confirmé."
+          if(this.userService.isRegistered)
+          {
+            report = "Inscription confirmé."
+          }
+  
+          if(!this.userService.isRegistered)
+          {
+            report = " En attente ...";
+  
+            if(count < 6000)
+            {
+              getReport();
+            }              
+          }
         }
 
-        if(!this.userService.isRegistered)
+        if(count > 6000)
         {
-          report = " En attente ...";
-
-          if(count < 6000)
-          {
-            getReport();
-          }
-
-          else
-          {
-            report = " Échec de la communication, nous sommes désolé.";
-          }
-
-          
+          report = " Échec de la communication, nous sommes désolé.";  
         }
+
+
 
         count = count + 500;
         console.log(report)
