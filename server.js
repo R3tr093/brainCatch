@@ -91,10 +91,7 @@ app.get("/api/users/:id", function(req, res) {
         res.status(200).json(docs);
       } 
       
-      else
-       {
-        res.send('ok')
-       }
+     
       
     }
   });
