@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
 
     for(i = 0; i < this.userService.usedName.length; i++)
       {
-        if(this.userService.usedName[i].name === "admine")
+        if(this.userService.usedName[i].name === name)
          {
            nameUsed = true;
          }
