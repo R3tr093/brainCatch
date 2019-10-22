@@ -112,7 +112,7 @@ export class HomeComponent implements OnInit {
         if(!this.userService.isRegistered)
         {
           
-          if(this.count < 6000)
+          if(this.count < 6000 && !this.userService.isRegistered )
           {
             this.postUser();
             this.count = this.count + 500;
