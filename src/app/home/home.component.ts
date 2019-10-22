@@ -220,6 +220,7 @@ export class HomeComponent implements OnInit {
           document.getElementById('authReport').textContent = "Mot de passe incorrect.";  
         }
 
+        console.log(this.userService.userData)
 
         if(this.userService.userData.name.length > 5)
         {
