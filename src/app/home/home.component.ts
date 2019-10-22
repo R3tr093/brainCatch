@@ -14,7 +14,10 @@ export class HomeComponent implements OnInit {
 
   formOnScreen : boolean = false;
 
-  constructor(private userService : UsersServicesService) { }
+
+  constructor(private userService : UsersServicesService) {
+    this.userService.isRegistered = false;
+  }
 
   ngOnInit() {
 
@@ -99,8 +102,7 @@ export class HomeComponent implements OnInit {
       function getReport(){
 
 
-        if(this.userService.isRegistered !== undefined)
-        {
+       
           if(this.userService.isRegistered)
           {
             report = "Inscription confirmé."
@@ -113,14 +115,16 @@ export class HomeComponent implements OnInit {
             if(count < 6000)
             {
               getReport();
-            }              
+            }
+  
+            else
+            {
+              report = " Échec de la communication, nous sommes désolé.";
+            }
+  
+            
           }
-        }
-
-        if(count > 6000)
-        {
-          report = " Échec de la communication, nous sommes désolé.";  
-        }
+        
 
 
 
