@@ -96,9 +96,6 @@ app.get("/api/users/:id/:pass", function(req, res) {
       {
         res.send({ result: 'Password not match' });
       }
-      
-     
-      
     }
   });
 });
@@ -122,9 +119,9 @@ app.post("/api/users", function(req, res) {
   {
     handleError(res, "Invalid user input", "Must provide a name.", 400);
   }
-  if (!req.body.name)
+  if (!req.body.password)
   {
-    handleError(res, "Invalid user input", "Must provide a password.", 400);
+    handleError(res, "Invalid user input", "Must provide an password.", 400);
   }
    else
     {
