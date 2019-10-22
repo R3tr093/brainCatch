@@ -67,7 +67,7 @@ app.get("/api/users", function(req, res) {
 app.get("/api/users/:id/:pass", function(req, res) {
   
   let param = String(req.params.id);
-  let password = String(req.params.password)
+  let password = String(req.params.pass)
 
 
   // -> Find a way to export result of decrypt 
