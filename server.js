@@ -77,7 +77,14 @@ app.get("/api/users/:id", function(req, res) {
     if (err) {
       handleError(res, err.message, "Failed to get user credentials...");
     } else {
-      res.status(200).json(docs);
+
+      if(bcrypt.compareSync(docs[0].password, hash)) {
+        // Passwords match
+        res.status(200).json(docs);
+       } else {
+        // Passwords don't match
+       }
+      
     }
   });
 });

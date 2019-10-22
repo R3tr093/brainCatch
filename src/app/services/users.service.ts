@@ -26,8 +26,8 @@ export class UsersServicesService {
     return this.http.get('https://braincatch.herokuapp.com/api/users/' + param).subscribe(
         value => {
           console.log(value)
-          let test = value;
-          console.log(test[0].hash)
+          //let test = value;
+          //console.log(test[0].hash)
         },
         error => {
           console.log(error)
