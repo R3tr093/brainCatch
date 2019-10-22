@@ -103,6 +103,7 @@ app.post("/api/users/logIn", function(req, res) {
     if (err) 
     {
       handleError(res, err.message, "Failed to get user credentials...");
+      res.send({ report: 'User not registered' });
     } 
     
     // Compare hash..
