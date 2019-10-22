@@ -221,7 +221,7 @@ export class HomeComponent implements OnInit {
         }
 
 
-        if(this.userService.userData.name)
+        if(this.userService.userData.name.length > 5)
         {
           console.log('Redirect to the app'); 
         }
