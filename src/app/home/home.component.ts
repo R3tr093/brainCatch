@@ -13,6 +13,8 @@ import { UsersServicesService } from '../services/users.service';
 export class HomeComponent implements OnInit {
 
   formOnScreen : boolean = false;
+  count : number = 1000;
+  userData : any;
  
   
 
@@ -98,20 +100,66 @@ export class HomeComponent implements OnInit {
     if(password2 === password && name.length > 5)
     {
       
-      if(!this.userService.isRegistered)
-      {
-        this.userService.postUser({"name": name, "password": password});       
-      }
+      document.getElementById('postBtn').style.display = " none ";
+      document.getElementById('postSpinner').style.display = "block";
+
+      this.userService.postUser({"name": name, "password": password}); 
+
+      let report = "";
+      
+      setTimeout(() => { 
+  
+        if(!this.userService.isRegistered)
+        {
+          
+          if(this.count < 6000)
+          {
+            this.postUser();
+            this.count = this.count + 500;
+            report = " En attente ..."
+            document.getElementById('postSpinner').style.opacity = "1";
+            document.getElementById('postReport').textContent = report;
+          }
+          
+          if(this.count > 6000)
+          {
+            document.getElementById('postReport').textContent = "";
+            report = "Pertubations réseaux, veuillez réessayez plus tard.";
+            document.getElementById('postReport').textContent = report;
+            document.getElementById('postBtn').style.display = " block ";
+            document.getElementById('postSpinner').style.opacity = "0";
+            document.getElementById('postSpinner').style.display = "none !important";
+          }
+        }
+
+        if(this.userService.isRegistered)
+        {
+           report = "Votre compte à été créer ! ";
+           document.getElementById('postReport').textContent = "";
+           document.getElementById('postReport').textContent = report;
+           document.getElementById('postBtn').style.display = " block ";
+           document.getElementById('postSpinner').style.opacity = "0";
+           document.getElementById('postSpinner').style.display = "none !important";
+        }
+      
+        console.log(this.count)
+
+      }, this.count);
+
+     
     }
   }
 
   logUser(){
      let name = String((<HTMLInputElement>document.getElementById("authName")).value);
      let password = String((<HTMLInputElement>document.getElementById("authPassword")).value);
+
+     
     
     if(name.length > 5)
     {
-     this.userService.getUser(name,password);
+     this.userService.logInUser({"name": name, "password": password});
+    
     }
 
     else

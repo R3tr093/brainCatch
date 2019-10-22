@@ -38,9 +38,16 @@
         <label>Confirmer mot de passe : </label>
         <input type="password" id="password2" minlength="5" maxlength="20" placeholder="Veuillez ressaissir votre mot de passe ...">
 
-        <button type="button" (click)="postUser()" class="confBtn">Valider</button>
+        <button type="button" (click)="postUser()" id="postBtn" class="confBtn">Valider</button>
         
         <p id="postReport" class="report"></p>
+
+        <br>
+        <div class="d-flex justify-content-center" >
+            <div class="spinner-border text-primary" id="postSpinner" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+        </div>
     
         </form>
        

@@ -139,7 +139,7 @@ label
 .forms
 {
   position: absolute;
-  height: 55vh;
+  height: 58vh;
   width: 60vh;
   border: 2px solid #1761a0;
   display: none;
@@ -196,4 +196,9 @@ label
   margin: auto;
   margin-top: 10px;
   text-align: center;
+}
+
+#postSpinner
+{
+  display: none;
 }
