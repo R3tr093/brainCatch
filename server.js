@@ -91,6 +91,11 @@ app.get("/api/users/:id/:pass", function(req, res) {
         // Passwords match
         res.status(200).json(docs);
       } 
+
+      else
+      {
+        res.send({ result: 'Password not match' });
+      }
       
      
       
