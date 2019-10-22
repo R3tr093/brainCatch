@@ -197,7 +197,19 @@ export class HomeComponent implements OnInit {
         document.getElementById('authReport').textContent = "";
         document.getElementById('authReport').textContent = " Informations de connexion invalide ! "
 
-        console.log(this.userService.userData)
+
+        let nameUsed = false;
+
+        let i = 0;
+
+        for(i = 0; i < this.userService.usedName.length; i++)
+         {
+           if(this.userService.usedName[i].name === name)
+           {
+             nameUsed = true;
+           }
+         }
+        
 
         if(this.userService.userData.report === "Password not match.")
         {
@@ -205,7 +217,7 @@ export class HomeComponent implements OnInit {
           document.getElementById('authReport').textContent = "Mot de passe incorrect.";  
         }
 
-        if(this.userService.userData.report === "User not registered")
+        if(!nameUsed)
         {
           document.getElementById('authReport').textContent = "";
           document.getElementById('authReport').textContent = "Nom d'utilisateur incorrect.";  
