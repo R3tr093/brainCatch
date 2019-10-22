@@ -121,6 +121,7 @@ export class HomeComponent implements OnInit {
         }
 
         count = count + 500;
+        console.log(report)
 
       }
 
