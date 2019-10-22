@@ -113,7 +113,7 @@ app.post("/api/users/logIn", function(req, res) {
     else 
     {
 
-      if(bcrypt.compareSync(password, docs[0].password))
+      if(bcrypt.compareSync(req.body.password, docs[0].password))
       {
         // Passwords match
         res.status(200).json(docs);
