@@ -82,7 +82,7 @@ app.get("/api/users/:id", function(req, res) {
         // Passwords match
         res.status(200).json(docs);
        } else {
-        // Passwords don't match
+        res.status(404).send('Nope');
        }
       
     }
