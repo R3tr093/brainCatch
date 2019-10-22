@@ -103,7 +103,7 @@ export class HomeComponent implements OnInit {
     
     if(name.length > 5)
     {
-      this.userService.getUser(name);
+      this.userService.getUser(name,password);
     }
 
     else
