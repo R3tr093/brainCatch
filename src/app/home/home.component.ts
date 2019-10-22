@@ -176,7 +176,28 @@ export class HomeComponent implements OnInit {
     
      document.getElementById('authReport').textContent = "";
 
-    if(name.length > 5 && password.length > 3)
+
+
+     let nameUsed = false;
+
+     let i = 0;
+
+     for(i = 0; i < this.userService.usedName.length; i++)
+      {
+        if(this.userService.usedName[i].name === name)
+        {
+          nameUsed = true;
+        }
+      }
+
+
+      if(!nameUsed)
+      {
+        document.getElementById('authReport').textContent = "";
+        document.getElementById('authReport').textContent = "Nom d'utilisateur incorrect.";  
+      }
+
+    if(name.length > 5 && password.length > 3 && nameUsed)
     {
      this.userService.logInUser({"name": name, "password": password});
 
@@ -197,31 +218,13 @@ export class HomeComponent implements OnInit {
         document.getElementById('authReport').textContent = "";
         document.getElementById('authReport').textContent = " Informations de connexion invalide ! "
 
-
-        let nameUsed = false;
-
-        let i = 0;
-
-        for(i = 0; i < this.userService.usedName.length; i++)
-         {
-           if(this.userService.usedName[i].name === name)
-           {
-             nameUsed = true;
-           }
-         }
-        
-
+      
         if(this.userService.userData.report === "Password not match.")
         {
           document.getElementById('authReport').textContent = "";
           document.getElementById('authReport').textContent = "Mot de passe incorrect.";  
         }
 
-        if(!nameUsed)
-        {
-          document.getElementById('authReport').textContent = "";
-          document.getElementById('authReport').textContent = "Nom d'utilisateur incorrect.";  
-        }
 
         if(this.userService.userData.name)
         {
