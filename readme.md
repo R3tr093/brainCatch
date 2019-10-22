@@ -17,23 +17,3 @@ then ensure the username is not already ued by others user and kill code input
 
 
 --- > Flag or not flag ?  
-
-
-  let isAlreadyUsed = false;
-  
-
-  db.collection(USERS_COLLECTION).find({name: req.body.name}).toArray(function(err, docs) {
-    
-    // Credentials not found in the DB.
-    if (err) 
-    {
-      isAlreadyUsed = false;
-    } 
-    
-    // This user name already exist.
-    else 
-    {
-      isAlreadyUsed = true;
-      res.send({ report: "Ce nom d'utilisateur est déjà pris, désolé."});
-    }
-  });
