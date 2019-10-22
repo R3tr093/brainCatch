@@ -28,26 +28,6 @@ export class HomeComponent implements OnInit {
       this.userService.getUsers();
       this.usedName = this.userService.usedName;
 
-      setTimeout(()=>{
-        let nameUsed = false;
-
-        let i = 0;
-        
-        for(i = 0; i < this.userService.usedName.length; i++)
-        {
-          console.log(this.userService.usedName[i].name)
-          
-          if(this.userService.usedName[i].name === "admine")
-          {
-            nameUsed = true;
-            
-          
-          }
-        }
-
-        console.log(nameUsed)
-
-      },3000)
   }
 
   displayAuth()
@@ -101,14 +81,27 @@ export class HomeComponent implements OnInit {
     let password2 = String((<HTMLInputElement>document.getElementById("password2")).value);
     let report = "";
 
+    let nameUsed = false;
+
+    let i = 0;
+
+    for(i = 0; i < this.userService.usedName.length; i++)
+      {
+        console.log(this.userService.usedName[i].name)
+        
+        if(this.userService.usedName[i].name === "admine")
+         {
+           nameUsed = true;
+         }
+      }
 
 
 
-    /*if(nameUsed)
+    if(nameUsed)
     {
       document.getElementById('postReport').textContent = "";
       document.getElementById('postReport').innerHTML = "Erreur : Le pseudo  " + name + " est déjà pris ! ";
-    }*/
+    }
 
     if(password2 !== password)
     {
