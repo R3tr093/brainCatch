@@ -74,15 +74,26 @@ app.get("/api/users/:id", function(req, res) {
   // Then we can try to  resolve this way in front-end, or just try to look at how use the docs object in the front-end 
   
   db.collection(USERS_COLLECTION).find({name: param}).toArray(function(err, docs) {
-    if (err) {
+    
+    // Credentials not found in the DB.
+    if (err) 
+    {
       handleError(res, err.message, "Failed to get user credentials...");
-    } else {
+    } 
+    
+    // Compare hash.
+    else 
+    {
 
-      if(bcrypt.compareSync(docs[0].password, docs[0].hash)) {
+      if(bcrypt.compareSync(req.body.password, docs[0].hash))
+      {
         // Passwords match
         res.status(200).json(docs);
-       } else {
-        res.status(404).send('Nope');
+      } 
+      
+      else
+       {
+        res.redirect('/');
        }
       
     }
