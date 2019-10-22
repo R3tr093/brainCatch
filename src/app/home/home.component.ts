@@ -155,7 +155,7 @@ export class HomeComponent implements OnInit {
            report = "Votre compte à été créer ! ";
            document.getElementById('postReport').textContent = "";
            document.getElementById('postReport').textContent = report;
-           document.getElementById('postBtn').style.display = " block ";
+           document.getElementById('postBtn').style.display = " none ";
            document.getElementById('postSpinner').style.opacity = "0";
            document.getElementById('postSpinner').style.display = "none !important";
         }
