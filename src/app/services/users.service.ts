@@ -23,7 +23,7 @@ export class UsersServicesService {
   
   
   getUser(param, password){
-    return this.http.get('https://braincatch.herokuapp.com/api/users/' + param + '/' +  password).subscribe(
+    return this.http.get('https://braincatch.herokuapp.com/api/users/' + param + '/' + password).subscribe(
         value => {
           console.log(value)
           this.userData = value;
