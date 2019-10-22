@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   formOnScreen : boolean = false;
   count : number = 1000;
   userData : any;
+  usedName : any;
  
   
 
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
       this.userService.getUsers();
+      this.usedName = this.userService.usedName;
   }
 
   displayAuth()
@@ -78,6 +80,25 @@ export class HomeComponent implements OnInit {
     let password2 = String((<HTMLInputElement>document.getElementById("password2")).value);
     let report = "";
 
+    let nameUsed = false;
+
+    let i = 0;
+
+    for(i = 0; i < this.usedName.length; i++)
+    {
+      if(this.usedName[i].name === name)
+      {
+        nameUsed = true;
+      }
+    }
+
+
+    if(nameUsed)
+    {
+      document.getElementById('postReport').textContent = "";
+      document.getElementById('postReport').innerHTML = "Erreur : Le pseudo  " + name + " est déjà pris ! ";
+    }
+
     if(password2 !== password)
     {
       document.getElementById('postReport').textContent = "";
@@ -90,7 +111,7 @@ export class HomeComponent implements OnInit {
       document.getElementById('postReport').textContent = "Erreur : Votre nom d'utilisateur doit faire plus de 5 caractères.";
     }
 
-    if(password2 === password && name.length > 5)
+    if(password2 === password && name.length > 5 && !nameUsed)
     {
       
       document.getElementById('postBtn').style.display = " none ";
