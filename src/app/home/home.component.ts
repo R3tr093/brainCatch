@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   formOnScreen : boolean = false;
   count : number = 1000;
   userData : any;
-  usedName : any;
  
   
 
@@ -26,8 +25,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
       this.userService.getUsers();
-      this.usedName = this.userService.usedName;
-
   }
 
   displayAuth()
@@ -79,7 +76,7 @@ export class HomeComponent implements OnInit {
     let name = String((<HTMLInputElement>document.getElementById("name")).value);
     let password = String((<HTMLInputElement>document.getElementById("password")).value);
     let password2 = String((<HTMLInputElement>document.getElementById("password2")).value);
-    let report = "";
+
 
     let nameUsed = false;
 
