@@ -64,9 +64,10 @@ app.get("/api/users", function(req, res) {
 
 // -- > get an user selected by his ID.
 
-app.get("/api/users/:id", function(req, res) {
+app.get("/api/users/:id/:pass", function(req, res) {
   
   let param = String(req.params.id);
+  let password = String(req.params.password)
 
 
   // -> Find a way to export result of decrypt 
@@ -85,7 +86,7 @@ app.get("/api/users/:id", function(req, res) {
     else 
     {
 
-      if(bcrypt.compareSync(req.body.password, docs[0].hash))
+      if(bcrypt.compareSync(password, docs[0].hash))
       {
         // Passwords match
         res.status(200).json(docs);
