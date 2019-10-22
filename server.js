@@ -83,7 +83,7 @@ app.get("/api/users/name", function(req, res) {
 
 
 
-//  -- > LogIn
+//  -- > LogIn.
 
 app.post("/api/users/logIn", function(req, res) {
   
