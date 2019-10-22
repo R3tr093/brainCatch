@@ -186,6 +186,21 @@ export class HomeComponent implements OnInit {
 
      setTimeout(()=>{
 
+
+      if(this.userService.isLogged)
+      {
+        document.getElementById('logSpinner').style.opacity = "0";
+        document.getElementById('logSpinner').style.display = "none !important"
+        document.getElementById('logBtn').style.display = "block";
+
+
+        document.getElementById('authReport').textContent = "";
+        document.getElementById('authReport').textContent = " Informations de connexion invalide ! "
+
+        console.log(this.userData[0].report);
+      }
+
+
       if(this.count >= 6000 && !this.userService.isLogged)
       {
         document.getElementById('authReport').textContent = "";
