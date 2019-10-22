@@ -32,17 +32,15 @@ export class HomeComponent implements OnInit {
         let nameUsed = false;
 
         let i = 0;
-
-        console.log(this.userService.usedName)
-        console.log(this.userService.usedName[0])
-        console.log(this.userService.usedName[0].name)
-
-        for(i = 0; i < this.userService.usedName; i++)
+        
+        for(i = 0; i < this.userService.usedName.length; i++)
         {
+          console.log(this.userService.usedName[i].name)
+          
           if(this.userService.usedName[i].name === "admine")
           {
             nameUsed = true;
-            console.log(this.userService.usedName[i])
+            
           
           }
         }
