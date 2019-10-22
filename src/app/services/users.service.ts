@@ -23,10 +23,10 @@ export class UsersServicesService {
 
   constructor(private http: HttpClient) { }
 
+  
   getUsers(){
     return this.http.get('https://braincatch.herokuapp.com/api/users/').subscribe(
         value => {
-          console.log(value)
           this.usedName = value;
 
         },
@@ -38,6 +38,9 @@ export class UsersServicesService {
       );
   }
   
+
+  // Take as param  the user name.
+
   getUser(param){
     return this.http.get('https://braincatch.herokuapp.com/api/users/' + param).subscribe(
         value => {
@@ -52,6 +55,8 @@ export class UsersServicesService {
         }
       );
   }
+
+  // isRegistered is used to display the successfull request to user.
 
   postUser(name){
     return this.http.post('https://braincatch.herokuapp.com/api/users', name, httpOptions).subscribe(
@@ -68,10 +73,10 @@ export class UsersServicesService {
       );
   }
 
+
   logInUser(data){
     return this.http.post('https://braincatch.herokuapp.com/api/users/logIn', data, httpOptions).subscribe(
         value => {
-          this.isRegistered = true;
           console.log(value)
           this.userData = value;
         },

@@ -27,6 +27,9 @@ export class HomeComponent implements OnInit {
       this.userService.getUsers();
   }
 
+
+  // These two function display the Authentication form or the logIn form by click on button.
+
   displayAuth()
   {
 
@@ -71,6 +74,9 @@ export class HomeComponent implements OnInit {
    
   }
 
+
+
+  // Max delay of 12 sec before abort the request.
   postUser(){
 
     let name = String((<HTMLInputElement>document.getElementById("name")).value);
@@ -84,14 +90,13 @@ export class HomeComponent implements OnInit {
 
     for(i = 0; i < this.userService.usedName.length; i++)
       {
-        console.log(this.userService.usedName[i].name)
-        
         if(this.userService.usedName[i].name === "admine")
          {
            nameUsed = true;
          }
       }
 
+    this.userService.usedName = [];  
 
 
     if(nameUsed)
@@ -156,20 +161,14 @@ export class HomeComponent implements OnInit {
            document.getElementById('postSpinner').style.opacity = "0";
            document.getElementById('postSpinner').style.display = "none !important";
         }
-      
-        console.log(this.count)
-
       }, this.count);
-
-     
     }
   }
 
   logUser(){
+
      let name = String((<HTMLInputElement>document.getElementById("authName")).value);
      let password = String((<HTMLInputElement>document.getElementById("authPassword")).value);
-
-     
     
     if(name.length > 5)
     {
@@ -183,8 +182,6 @@ export class HomeComponent implements OnInit {
       document.getElementById('authReport').textContent = "Information de connexion invalide ! ";
     }
 
-     
-     
   }
 
 }

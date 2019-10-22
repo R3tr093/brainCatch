@@ -9,9 +9,6 @@ var app = express();
 
 // Hash dependencies
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
-const myPlaintextPassword = 's0/\/\P4$$w0rD';
-const someOtherPlaintextPassword = 'not_bacon';
 
 
 app.use(bodyParser.json());
@@ -49,7 +46,6 @@ function handleError(res, reason, message, code) {
 
 /** ---- >  API ENDPOINTS  **/
 
-// -- > get all users infos
 
 app.get("/api/users", function(req, res) {
   db.collection(USERS_COLLECTION).find({}).toArray(function(err, docs) {
@@ -62,11 +58,11 @@ app.get("/api/users", function(req, res) {
 });
 
 
-// -- > get an user selected by his ID.
+// -- > get an user selected by his name.
 
-app.get("/api/users/:id", function(req, res) {
+app.get("/api/users/name", function(req, res) {
   
-  let param = String(req.params.id);
+  let param = String(req.params.name);
 
   
   db.collection(USERS_COLLECTION).find({name: param}).toArray(function(err, docs) {
@@ -129,6 +125,8 @@ app.post("/api/users/logIn", function(req, res) {
   
 });
 
+
+// -- > Add a new user
 
 app.post("/api/users", function(req, res) {
   
