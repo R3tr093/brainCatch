@@ -13,10 +13,12 @@ import { UsersServicesService } from '../services/users.service';
 export class HomeComponent implements OnInit {
 
   formOnScreen : boolean = false;
+ 
+  
 
 
   constructor(private userService : UsersServicesService) {
-    this.userService.isRegistered = false;
+   
   }
 
   ngOnInit() {
@@ -79,6 +81,7 @@ export class HomeComponent implements OnInit {
     let name = String((<HTMLInputElement>document.getElementById("name")).value);
     let password = String((<HTMLInputElement>document.getElementById("password")).value);
     let password2 = String((<HTMLInputElement>document.getElementById("password2")).value);
+    let report = "";
 
     if(password2 !== password)
     {
@@ -94,55 +97,12 @@ export class HomeComponent implements OnInit {
 
     if(password2 === password && name.length > 5)
     {
-      this.userService.postUser({"name": name, "password": password});
-
-      let count = 500;
-      let report = "";
-
-      function getReport(){
-
-
-       
-          if(this.userService.isRegistered)
-          {
-            report = "Inscription confirmé."
-          }
-  
-          if(!this.userService.isRegistered)
-          {
-            report = " En attente ...";
-  
-            if(count < 6000)
-            {
-              getReport();
-            }
-  
-            else
-            {
-              report = " Échec de la communication, nous sommes désolé.";
-            }
-  
-            
-          }
-        
-
-
-
-        count = count + 500;
-        console.log(report)
-
+      
+      if(!this.userService.isRegistered)
+      {
+        this.userService.postUser({"name": name, "password": password});       
       }
-
-      setTimeout(function(){
-
-        getReport();
-
-      },count)
-
-
     }
-
-
   }
 
   logUser(){
@@ -151,7 +111,7 @@ export class HomeComponent implements OnInit {
     
     if(name.length > 5)
     {
-      this.userService.getUser(name,password);
+     this.userService.getUser(name,password);
     }
 
     else

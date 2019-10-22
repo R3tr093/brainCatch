@@ -19,6 +19,7 @@ export class UsersServicesService {
   isRegistered : boolean = false;
 
 
+
   constructor(private http: HttpClient) { }
 
   
@@ -43,6 +44,7 @@ export class UsersServicesService {
         value => {
           console.log(value)
           this.isRegistered = true;
+          return 'prout';
         },
         error => {
           console.log(error)
