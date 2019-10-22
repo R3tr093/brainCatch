@@ -86,7 +86,7 @@ app.get("/api/users/:id/:pass", function(req, res) {
     else 
     {
 
-      if(bcrypt.compareSync(password, docs[0].hash))
+      if(bcrypt.compareSync(password, docs[0].password))
       {
         // Passwords match
         res.status(200).json(docs);
@@ -94,8 +94,11 @@ app.get("/api/users/:id/:pass", function(req, res) {
 
       else
       {
-        res.send({ result: 'Password not match' });
+        res.send({ hello: 'world' });
       }
+      
+     
+      
     }
   });
 });
@@ -112,16 +115,12 @@ app.post("/api/users", function(req, res) {
   
   let hash = bcrypt.hashSync(req.body.password, 10);
 
-  req.body.password = hash;
+  newUser.hash = hash;
   
 
   if (!req.body.name)
   {
     handleError(res, "Invalid user input", "Must provide a name.", 400);
-  }
-  if (!req.body.password)
-  {
-    handleError(res, "Invalid user input", "Must provide an password.", 400);
   }
    else
     {
