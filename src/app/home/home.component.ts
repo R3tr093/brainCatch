@@ -214,11 +214,6 @@ export class HomeComponent implements OnInit {
         document.getElementById('logSpinner').style.display = "none !important"
         document.getElementById('logBtn').style.display = "block";
 
-
-        document.getElementById('authReport').textContent = "";
-        document.getElementById('authReport').textContent = " Informations de connexion invalide ! "
-
-      
         if(this.userService.userData.report === "Password not match.")
         {
           document.getElementById('authReport').textContent = "";
@@ -233,7 +228,7 @@ export class HomeComponent implements OnInit {
       }
 
 
-      if(this.count >= 6000 && !this.userService.isLogged)
+      if(this.count >= 6000 && !this.userService.isLogged && nameUsed)
       {
         document.getElementById('authReport').textContent = "";
         document.getElementById('authReport').textContent = " Désolé erreur réseau, veuillez réessayez plus tard.";
@@ -248,7 +243,7 @@ export class HomeComponent implements OnInit {
 
       }
 
-      if(this.count < 6000 && !this.userService.isLogged)
+      if(this.count < 6000 && !this.userService.isLogged && nameUsed)
       {
         this.count = this.count + 500; 
         this.logUser();
@@ -260,12 +255,6 @@ export class HomeComponent implements OnInit {
 
      }, this.count)
     
-    }
-
-    else
-    {
-      document.getElementById('authReport').textContent = "";
-      document.getElementById('authReport').textContent = "Information de connexion invalide ! ";
     }
 
   }
