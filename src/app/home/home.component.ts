@@ -147,6 +147,10 @@ export class HomeComponent implements OnInit {
             document.getElementById('postBtn').style.display = " block ";
             document.getElementById('postSpinner').style.opacity = "0";
             document.getElementById('postSpinner').style.display = "none !important";
+            
+            setTimeout(()=>{
+              this.count = 1000;
+            },3000)
           }
         }
 
@@ -158,6 +162,8 @@ export class HomeComponent implements OnInit {
            document.getElementById('postBtn').style.display = " none ";
            document.getElementById('postSpinner').style.opacity = "0";
            document.getElementById('postSpinner').style.display = "none !important";
+           this.count = 1000;
+           
         }
       }, this.count);
     }
@@ -168,9 +174,44 @@ export class HomeComponent implements OnInit {
      let name = String((<HTMLInputElement>document.getElementById("authName")).value);
      let password = String((<HTMLInputElement>document.getElementById("authPassword")).value);
     
-    if(name.length > 5)
+     document.getElementById('authReport').textContent = "";
+
+    if(name.length > 5 && password.length > 3)
     {
      this.userService.logInUser({"name": name, "password": password});
+
+     document.getElementById('logBtn').style.display = " none ";
+     document.getElementById('logSpinner').style.display = "block";
+     document.getElementById('logSpinner').style.opacity = "1";
+
+     setTimeout(()=>{
+
+      if(this.count >= 6000 && !this.userService.isLogged)
+      {
+        document.getElementById('authReport').textContent = "";
+        document.getElementById('authReport').textContent = " Désolé erreur réseau, veuillez réessayez plus tard.";
+
+        document.getElementById('logSpinner').style.opacity = "0";
+        document.getElementById('logSpinner').style.display = "none !important";
+        document.getElementById('logBtn').style.display = "block";
+
+        setTimeout(()=>{
+          this.count = 1000;
+        },2000)
+
+      }
+
+      if(this.count < 6000 && !this.userService.isLogged)
+      {
+        this.count = this.count + 500; 
+        this.logUser();
+        document.getElementById('authReport').textContent = "";
+        document.getElementById('authReport').textContent = " Vérification en cours... ";
+        
+        console.log(this.count)
+      }
+
+     }, this.count)
     
     }
 

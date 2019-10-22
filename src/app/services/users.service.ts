@@ -18,6 +18,7 @@ export class UsersServicesService {
   userData : any;
   usedName : any;
   isRegistered : boolean = false;
+  isLogged : boolean = false;
 
 
 
@@ -80,9 +81,11 @@ export class UsersServicesService {
         value => {
           console.log(value)
           this.userData = value;
+          this.isLogged = true;
         },
         error => {
           console.log(error)
+          this.isLogged = false;
         },
         () => {
         }
