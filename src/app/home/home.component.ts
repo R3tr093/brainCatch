@@ -115,7 +115,7 @@ export class HomeComponent implements OnInit {
       document.getElementById('postReport').textContent = "Erreur : Votre nom d'utilisateur doit faire plus de 5 caractères.";
     }
 
-    if(password2 === password && name.length > 5 && !nameUsed)
+    if(password2 === password && name.length > 5 && !nameUsed && !this.userService.isRegistered)
     {
       
       document.getElementById('postBtn').style.display = " none ";

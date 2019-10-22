@@ -63,6 +63,7 @@ export class UsersServicesService {
         value => {
           this.isRegistered = true;
           this.userData = value;
+          this.usedName = [];
         },
         error => {
           console.log(error)
