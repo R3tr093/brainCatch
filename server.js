@@ -94,7 +94,7 @@ app.get("/api/users/:id/:pass", function(req, res) {
 
       else
       {
-        res.send({ hello: 'world' });
+        res.send({ report: 'Password not match.' });
       }
       
      
@@ -115,12 +115,17 @@ app.post("/api/users", function(req, res) {
   
   let hash = bcrypt.hashSync(req.body.password, 10);
 
-  newUser.hash = hash;
+  newUser.password = hash;
   
 
   if (!req.body.name)
   {
     handleError(res, "Invalid user input", "Must provide a name.", 400);
+  }
+
+  if (!req.body.password)
+  {
+    handleError(res, "Invalid user input", "Must provide a password.", 400);
   }
    else
     {
