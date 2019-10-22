@@ -16,6 +16,7 @@ const httpOptions = {
 export class UsersServicesService {
 
   userData : any;
+  isRegistered : boolean = false;
 
 
   constructor(private http: HttpClient) { }
@@ -41,6 +42,7 @@ export class UsersServicesService {
     return this.http.post('https://braincatch.herokuapp.com/api/users', name, httpOptions).subscribe(
         value => {
           console.log(value)
+          this.isRegistered = true;
         },
         error => {
           console.log(error)

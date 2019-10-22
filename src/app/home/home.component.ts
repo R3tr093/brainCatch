@@ -92,6 +92,45 @@ export class HomeComponent implements OnInit {
     if(password2 === password && name.length > 5)
     {
       this.userService.postUser({"name": name, "password": password});
+
+      let count = 500;
+      let report = "";
+
+      function getReport(){
+
+        if(this.userService.isRegistered)
+        {
+          report = "Inscription confirmé."
+        }
+
+        if(!this.userService.isRegistered)
+        {
+          report = " En attente ...";
+
+          if(count < 6000)
+          {
+            getReport();
+          }
+
+          else
+          {
+            report = " Échec de la communication, nous sommes désolé.";
+          }
+
+          
+        }
+
+        count = count + 500;
+
+      }
+
+      setTimeout(function(){
+
+        getReport();
+
+      },count)
+
+
     }
 
 
