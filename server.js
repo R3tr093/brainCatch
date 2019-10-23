@@ -60,7 +60,7 @@ app.get("/api/users", function(req, res) {
 
 // -- > get an user selected by his name.
 
-app.get("/api/users/name", function(req, res) {
+app.get("/api/users/:name", function(req, res) {
   
   let param = String(req.params.name);
 
