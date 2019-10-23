@@ -25,7 +25,7 @@ export class MenuComponent implements OnInit {
 
     if(!this.userService.isRegistered && !this.userService.isLogged)
     {
-      //window.location.href = "/";
+      window.location.href = "/";
     }
 
    

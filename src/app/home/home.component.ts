@@ -110,6 +110,9 @@ export class HomeComponent implements OnInit {
     // Get the user credentials value
     
     let name = String((<HTMLInputElement>document.getElementById("name")).value);
+
+    name = name.replace(/\s/g, "");
+
     let password = String((<HTMLInputElement>document.getElementById("password")).value);
     let password2 = String((<HTMLInputElement>document.getElementById("password2")).value);
 
