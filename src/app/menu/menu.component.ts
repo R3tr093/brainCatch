@@ -22,17 +22,9 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
  
-    if(!this.userService.userWelcome)
-    {
-      this.showModal("Bonjour " + this.userName + " merci d'utiliser brainCatch.",5000);
-      this.userService.userWelcome = true;
-    }
-
-    
-
     if(!this.userService.isRegistered && !this.userService.isLogged)
     {
-      //window.location.href = "/";
+      window.location.href = "/";
     }
 
    
@@ -42,6 +34,12 @@ export class MenuComponent implements OnInit {
       this.userName = this.userService.userData[0].name;
 
       this.userData = this.userService.userData;
+
+      if(!this.userService.userWelcome)
+      {
+        this.showModal("Bonjour " + this.userName + " merci d'utiliser brainCatch.",5000);
+        this.userService.userWelcome = true;
+      }
      
     }
 
