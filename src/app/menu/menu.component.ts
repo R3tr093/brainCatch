@@ -19,7 +19,7 @@ export class MenuComponent implements OnInit {
   constructor(private userService : UsersServicesService, private router : Router) { }
 
   ngOnInit() {
-    console.log(this.userService.userData)
+ 
    
     if(!this.userService.isRegistered && !this.userService.isLogged)
     {

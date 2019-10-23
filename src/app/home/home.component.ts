@@ -103,12 +103,17 @@ export class HomeComponent implements OnInit {
 
   // Max delay of 12 sec before aborting the post or login request.
 
+  // The two functions belows (log and post ) use the same principles.
+
   postUser(){
 
+    // Get the user credentials value
+    
     let name = String((<HTMLInputElement>document.getElementById("name")).value);
     let password = String((<HTMLInputElement>document.getElementById("password")).value);
     let password2 = String((<HTMLInputElement>document.getElementById("password2")).value);
 
+    // Look if the user name is already used
 
     let nameUsed = false;
 
@@ -129,12 +134,15 @@ export class HomeComponent implements OnInit {
       document.getElementById('postReport').innerHTML = "Erreur : Le pseudo  " + name + " est déjà pris ! ";
     }
 
+    // Look if the password match properly.
+
     if(password2 !== password)
     {
       document.getElementById('postReport').textContent = "";
       document.getElementById('postReport').innerHTML = "Erreur :  Vos mots de passe ne sont pas identiques ! "
     }
 
+    // Ensure credentials value is more than 5 characters
     if(name.length <= 5)
     {
       document.getElementById('postReport').textContent = "";
@@ -148,7 +156,7 @@ export class HomeComponent implements OnInit {
       document.getElementById('postReport').textContent = "Erreur : Votre mot de passe doit faire plus de 5 caractères.";
     }
 
-
+    // If all conditions are properly submit try to post in database new credentials
     if(password2 === password && password.length > 5   && name.length > 5 && !nameUsed && !this.userService.isRegistered)
     {
       
@@ -159,11 +167,15 @@ export class HomeComponent implements OnInit {
 
       let report = "";
       
+      //Display spinner and wait for the request return
+      
       setTimeout(() => { 
   
         if(!this.userService.isRegistered)
         {
-          
+         
+          // Wait for a return from the request 
+
           if(this.count < 6000 && !this.userService.isRegistered )
           {
             this.postUser();
@@ -173,6 +185,7 @@ export class HomeComponent implements OnInit {
             document.getElementById('postReport').textContent = report;
           }
           
+          // if we wait so much, return a network error.
           if(this.count > 6000)
           {
             document.getElementById('postReport').textContent = "";
@@ -188,6 +201,7 @@ export class HomeComponent implements OnInit {
           }
         }
 
+        // If the request is successfully completed we redirect.
         if(this.userService.isRegistered)
         {
           this.router.navigate(['/Menu']);
