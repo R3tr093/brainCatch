@@ -14,6 +14,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class MenuComponent implements OnInit {
 
   userName : string = "Anonyme";
+  userData : any;
 
   constructor(private userService : UsersServicesService, private router : Router) { }
 
@@ -24,11 +25,18 @@ export class MenuComponent implements OnInit {
     if(this.userService.isRegistered)
     {
       this.userName = this.userService.userData.name;
+      this.userData = this.userService.userData;
     }
 
     if(!this.userService.isRegistered)
     {
       this.userName = this.userService.userData[0].name;
+      this.userService.getUser(this.userName)
+      setTimeout(()=>{
+        this.userData = this.userService.userData;
+        console.log(this.userData)
+
+      },5000)
     }
 
     
