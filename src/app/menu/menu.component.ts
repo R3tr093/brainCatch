@@ -20,7 +20,13 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     console.log(this.userService.userData)
     this.userName = this.userService.userData[0].name;
-    this.userName = this.userService.userData.name;
+
+    if(this.userService.isRegistered)
+    {
+      this.userName = this.userService.userData.name;
+    }
+
+    
   }
 
 }
