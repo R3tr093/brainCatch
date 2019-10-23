@@ -140,7 +140,7 @@ export class MenuComponent implements OnInit {
     for(i = 0; i < targets.length; i++)
     {
       let random = Math.floor(Math.random() * targets.length);
-      targets[i].style.backgroundColor = colors[random];
+      //targets[i].style.backgroundColor = colors[random];
     }
 
   }
