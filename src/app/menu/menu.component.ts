@@ -20,11 +20,14 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
  
-   
+    this.showModal("Bonjour " + this.userName + " merci d'utiliser brainCatch.",5000);
+
     if(!this.userService.isRegistered && !this.userService.isLogged)
     {
-      window.location.href = "/";
+      //window.location.href = "/";
     }
+
+   
 
     else
     {
@@ -36,5 +39,53 @@ export class MenuComponent implements OnInit {
 
     
   }
+
+  showModal(text:string,timer:number) {
+    
+    var elem = document.getElementById("modal");
+
+    var elemTxt = document.getElementById('modalTxt');
+
+    elemTxt.textContent = "";
+
+    elemTxt.textContent = text;
+
+    var pos = 115;
+
+    var id = setInterval(frame, 35);
+
+    function frame() {
+      if (pos == 83) {
+        clearInterval(id);
+
+        setTimeout(()=> {
+
+          var elem = document.getElementById("modal");
+          
+          var pos = 83;
+
+          var id = setInterval(frame, 35);
+          
+          function frame() {
+            if (pos == 115) {
+              clearInterval(id);
+            } 
+            else {
+              pos++;
+              elem.style.top = pos + '%';
+              
+            }
+          }
+
+        },timer)
+
+      } else {
+        pos--;
+        elem.style.top = pos + '%';
+        
+      }
+    }
+  }
+
 
 }
