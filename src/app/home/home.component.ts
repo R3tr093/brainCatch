@@ -189,14 +189,7 @@ export class HomeComponent implements OnInit {
 
         if(this.userService.isRegistered)
         {
-           report = "Votre compte à été créer ! ";
-           document.getElementById('postReport').textContent = "";
-           document.getElementById('postReport').textContent = report;
-           document.getElementById('postBtn').style.display = " none ";
-           document.getElementById('postSpinner').style.opacity = "0";
-           document.getElementById('postSpinner').style.display = "none !important";
-           this.count = 1000;
-           
+          window.location.href = "/Menu";
         }
       }, this.count);
     }
