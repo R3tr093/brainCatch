@@ -128,9 +128,7 @@ export class MenuComponent implements OnInit {
 
   randomStyle(){
 
-    let targets = (<HTMLElement>document.querySelector('.gamesLinks'))
-
-    let elem = document.getElementsByClassName('gamesLinks');
+    let elements = document.getElementsByClassName('gamesLinks');
     
     
     let colors = ["cornflowerblue","goldenrod","hotpink","#d1ba79","#e33930"];
@@ -139,10 +137,13 @@ export class MenuComponent implements OnInit {
 
     let i = 0;
 
-    for(i = 0; i < elem.length; i++)
+    for(i = 0; i < elements.length; i++)
     {
-      let random = Math.floor(Math.random() * elem.length);
-      targets[i].style.backgroundColor = colors[random];
+      let random = Math.floor(Math.random() * elements.length);
+      
+      let target = document.getElementById('g' + String(i + 1));
+
+      target.style.backgroundColor = colors[random];
     }
 
   }
