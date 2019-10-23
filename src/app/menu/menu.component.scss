@@ -14,8 +14,8 @@
 #menu
 {
     position: absolute;
-    top: 0%;
-    height: 100vh;
+    top: 20vh;
+    height: 80vh;
     width: 100%;
     border: 1px solid black;
     z-index: 50;
@@ -54,6 +54,8 @@
     font-style: italic;
 }
 
+
+
 #modal
 {
     position: absolute;
@@ -63,4 +65,37 @@
     width: 50%;
     border: 1px solid black;
     
+}
+
+#userBoard
+{
+    position: absolute;
+    top: 0%;
+    left: 30%;
+    width: 70%;
+    height: 20vh;
+    border: 1px solid black;
+}
+
+#board
+{
+    display: block;
+    height: 100%;
+  
+}
+
+#tips
+{
+    display: none;
+}
+
+.gamesLinks
+{
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    border: 1px solid black;
+    text-align: center;
+    display: block;
+
 }

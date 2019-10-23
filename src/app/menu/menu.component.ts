@@ -16,6 +16,7 @@ export class MenuComponent implements OnInit {
   userName : string = "Anonyme";
   userData : any;
 
+
   constructor(private userService : UsersServicesService, private router : Router) { }
 
   ngOnInit() {
@@ -39,6 +40,9 @@ export class MenuComponent implements OnInit {
 
     
   }
+
+
+  // Show and hide the modal with as parameter the timer and the text
 
   showModal(text:string,timer:number) {
     
@@ -87,5 +91,30 @@ export class MenuComponent implements OnInit {
     }
   }
 
+  // Display userboard 
+
+  displayTips(text:string){
+
+    document.getElementById('board').style.display = "none";
+
+
+    document.getElementById('tips').classList.remove('slideOutDown');
+    document.getElementById('tips').classList.add('slideInRight');
+
+    document.getElementById('tips').style.display = "block";
+    document.getElementById('tips').textContent = text;
+
+  }
+
+  hideTips()
+  {
+    document.getElementById('tips').classList.remove('slideInRight');
+    document.getElementById('tips').classList.add('slideOutDown');
+    document.getElementById('tips').textContent = " ";
+
+    document.getElementById('board').style.display = "block";
+    
+  
+  }
 
 }
