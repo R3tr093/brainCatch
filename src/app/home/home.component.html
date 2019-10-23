@@ -11,7 +11,6 @@
         <!-- Main menu -->
 
        <div class="col-6" id="linkWrapper">
-      
         <a routerLink="/Demo" routerLinkActive="active" class="btn btn-1 slideInLeft animated" title="Essayez l'application sans vous enregistrez.">Démo</a>
         <button (click)="displayLogIn()" class="btn btn-2 slideInRight animated" title="Entrez vos identifiants pour vous connectez.">Connexion</button>
         <button (click)="displayAuth()"  class="btn btn-3 slideInLeft animated" title="S'inscrire et utiliser l'application complète.">Inscription</button>
@@ -56,6 +55,8 @@
               <span class="sr-only">Loading...</span>
             </div>
         </div>
+
+        <div id="redirect"></div>
     
         </form>
        
