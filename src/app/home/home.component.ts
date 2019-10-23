@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { UsersServicesService } from '../services/users.service';
 
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -20,7 +22,7 @@ export class HomeComponent implements OnInit {
   
 
 
-  constructor(private userService : UsersServicesService) {
+  constructor(private userService : UsersServicesService, private router : Router) {
    
   }
 
@@ -189,7 +191,7 @@ export class HomeComponent implements OnInit {
 
         if(this.userService.isRegistered)
         {
-          document.getElementById('redirect').innerHTML = ' <a routerLink="/Menu" routerLinkActive="active" class="btn btn-1 slideInLeft animated">Go</a>';
+          router.navigate(['/library']);
         }
       }, this.count);
     }
@@ -250,7 +252,7 @@ export class HomeComponent implements OnInit {
         {
           if(this.userService.userData[0].name.length > 5)
           {
-            window.location.href = "/Menu";
+            this.router.navigate(['/library']);
           }
         }
         
