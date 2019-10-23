@@ -13,6 +13,7 @@ import { UsersServicesService } from '../services/users.service';
 export class HomeComponent implements OnInit {
 
   formOnScreen : boolean = false;
+  aboutOnScreen : boolean = false;
   count : number = 1000;
   userData : any;
  
@@ -25,6 +26,30 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
       this.userService.getUsers();
+  }
+
+
+  displayAbout(){
+    let elt = document.getElementById('aboutElt');
+
+    if(!this.aboutOnScreen)
+    {
+      elt.classList.remove('slideOutDown')      
+      elt.classList.add('slideInDown');
+      elt.style.display = "block";
+
+      this.aboutOnScreen = true;
+    }
+
+    else
+    {
+      elt.classList.remove('slideInDown');
+      elt.classList.add('slideOutDown');
+      this.aboutOnScreen = false;
+    }
+
+    console.log(this.aboutOnScreen)
+
   }
 
 

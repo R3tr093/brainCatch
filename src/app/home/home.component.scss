@@ -203,3 +203,51 @@ label
   display: none;
   margin-top: 15px;
 }
+
+#aboutBtn
+{
+  position: absolute;
+  left: 90%;
+  top: 0%;
+  border: 1px solid #1761a0;
+  color : #1761a0;
+  box-shadow: 2px  1px 2px 1px whitesmoke;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: white;
+}
+
+#aboutBtn:hover
+{
+  height: 40px;
+  width: 40px;
+}
+
+#aboutElt
+{
+  display: none;
+  position: absolute;
+  top: 15%;
+  height: 65vh;
+  width: 60vh;
+  background: white;
+  border: 2px solid #1761a0;
+  box-shadow: 2px 2px 6px 6px lightgrey;
+  padding: 8px;
+  z-index: 50;
+}
+
+#closeAbout
+{
+  position: relative;
+  left: 54vh;
+  top: 0vh;
+  background: white;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  color: #1761a0;
+  border-color: #1761a0;
+  border-style: solid;
+}

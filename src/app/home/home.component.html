@@ -7,17 +7,25 @@
       
        </div>
       
+
+        <!-- Main menu -->
+
        <div class="col-6" id="linkWrapper">
       
-
         <a routerLink="/Demo" routerLinkActive="active" class="btn btn-1 slideInLeft animated" title="Essayez l'application sans vous enregistrez.">Démo</a>
         <button (click)="displayLogIn()" class="btn btn-2 slideInRight animated" title="Entrez vos identifiants pour vous connectez.">Connexion</button>
         <button (click)="displayAuth()"  class="btn btn-3 slideInLeft animated" title="S'inscrire et utiliser l'application complète.">Inscription</button>
 
         <p id="quote"><em>Parce que vos facultés mentales ont parfois besoin d'une mise à jour.</em></p>
-      
 
        </div>
+
+
+
+       
+
+
+       <!-- Registering form toggle -->
 
        <div class="col-6" id="authForm" class="animated forms">
          
@@ -56,6 +64,8 @@
 
        </div>
 
+       <!-- Authentication form toggle -->
+
        <div class="col-6" id="logInForm" class="animated forms">
 
         <br>
@@ -86,6 +96,19 @@
         </form>
 
         </div>
+
+
+        <!-- About section toggle  -->
+
+       <button (click)="displayAbout()" id="aboutBtn" title="Des questions ?">?</button>
+       
+       <div class="col-6" id="aboutElt" class="animated" >
+
+        <button (click)="displayAbout()" id="closeAbout">X</button>
+
+      
+
+       </div>
 
       
       
