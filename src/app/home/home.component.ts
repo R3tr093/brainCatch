@@ -189,7 +189,7 @@ export class HomeComponent implements OnInit {
 
         if(this.userService.isRegistered)
         {
-          window.location.href = "/Menu";
+          document.getElementById('postReport').innerHTML = ' <a routerLink="/Menu" routerLinkActive="active" class="btn btn-1 slideInLeft animated">Go</a>';
         }
       }, this.count);
     }
