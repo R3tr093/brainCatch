@@ -2,11 +2,13 @@
 {
     height: 20vh;
     width: 30%;
-    border: 1px solid black;
+    border-bottom: 2px solid #1761a0;
+    border-right: 2px solid #1761a0;
     position: absolute;
     left: 0px;
     top: 0px;
     z-index: 100;
+    display: flex;
 }
 
 #menu
@@ -17,6 +19,39 @@
     width: 100%;
     border: 1px solid black;
     z-index: 50;
+
+
+}
+
+#wrapPic
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#profilePic
+{
+    width: 90px;
+    height: 90px;
+
+}
+
+#describe
+{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 15px;
+    border-left: 2px solid #1761a0;
+    margin-left: 15px;
+}
+
+.linkBasic:hover
+{
+    text-decoration: none;
+    font-style: italic;
 }
 
 #modal
