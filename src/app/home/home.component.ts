@@ -253,10 +253,14 @@ export class HomeComponent implements OnInit {
           document.getElementById('authReport').textContent = "Mot de passe incorrect.";  
         }
 
-        if(this.userService.userData[0].name.length > 5)
+        else
         {
-          console.log('Redirect to the app'); 
+          if(this.userService.userData[0].name.length > 5)
+          {
+            window.location.href = "/Menu";
+          }
         }
+        
       }
 
 
