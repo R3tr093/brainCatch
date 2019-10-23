@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
       this.aboutOnScreen = false;
     }
 
-    console.log(this.aboutOnScreen)
+    
 
   }
 

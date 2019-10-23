@@ -228,9 +228,10 @@ label
 {
   display: none;
   position: absolute;
-  top: 15%;
-  height: 65vh;
-  width: 60vh;
+  top: 10%;
+  left: 20%;
+  height: 80vh;
+  width: 60%;
   background: white;
   border: 2px solid #1761a0;
   box-shadow: 2px 2px 6px 6px lightgrey;
@@ -241,7 +242,7 @@ label
 #closeAbout
 {
   position: relative;
-  left: 54vh;
+  left: 95%;
   top: 0vh;
   background: white;
   height: 30px;
