@@ -191,7 +191,7 @@ export class HomeComponent implements OnInit {
 
         if(this.userService.isRegistered)
         {
-          router.navigate(['/library']);
+          this.router.navigate(['/Menu']);
         }
       }, this.count);
     }
