@@ -21,22 +21,29 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     console.log(this.userService.userData)
    
+    if(!this.userService.isRegistered && !this.userService.isLogged)
+    {
+      window.location.href = "/";
+    }
 
     if(this.userService.isRegistered)
     {
       this.userName = this.userService.userData.name;
-      this.userData = this.userService.userData;
-    }
 
-    if(!this.userService.isRegistered)
-    {
-      this.userName = this.userService.userData[0].name;
       this.userService.getUser(this.userName)
       setTimeout(()=>{
         this.userData = this.userService.userData;
         console.log(this.userData)
 
       },5000)
+    }
+
+    if(!this.userService.isRegistered)
+    {
+      this.userName = this.userService.userData[0].name;
+
+      this.userData = this.userService.userData;
+     
     }
 
     
