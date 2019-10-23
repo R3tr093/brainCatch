@@ -26,19 +26,7 @@ export class MenuComponent implements OnInit {
       window.location.href = "/";
     }
 
-    if(this.userService.isRegistered)
-    {
-      this.userName = this.userService.userData.name;
-
-      this.userService.getUser(this.userName)
-      setTimeout(()=>{
-        this.userData = this.userService.userData;
-        console.log(this.userData)
-
-      },5000)
-    }
-
-    if(!this.userService.isRegistered)
+    else
     {
       this.userName = this.userService.userData[0].name;
 

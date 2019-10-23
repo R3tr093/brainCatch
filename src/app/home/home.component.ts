@@ -30,7 +30,8 @@ export class HomeComponent implements OnInit {
       this.userService.getUsers();
   }
 
-
+ // These three functions display the Authentication, the logIn form, or the about element by click on button.
+ 
   displayAbout(){
     let elt = document.getElementById('aboutElt');
 
@@ -53,9 +54,6 @@ export class HomeComponent implements OnInit {
     
 
   }
-
-
-  // These two function display the Authentication form or the logIn form by click on button.
 
   displayAuth()
   {
@@ -103,7 +101,8 @@ export class HomeComponent implements OnInit {
 
 
 
-  // Max delay of 12 sec before abort the request.
+  // Max delay of 12 sec before aborting the post or login request.
+
   postUser(){
 
     let name = String((<HTMLInputElement>document.getElementById("name")).value);
