@@ -13,10 +13,13 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
+  userName : string = "Anonyme";
+
   constructor(private userService : UsersServicesService, private router : Router) { }
 
   ngOnInit() {
     console.log(this.userService.userData)
+    this.userName = this.userService.userData[0].name;
   }
 
 }
