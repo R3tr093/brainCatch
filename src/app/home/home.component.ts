@@ -252,7 +252,7 @@ export class HomeComponent implements OnInit {
         {
           if(this.userService.userData[0].name.length > 5)
           {
-            this.router.navigate(['/library']);
+            this.router.navigate(['/Menu']);
           }
         }
         
