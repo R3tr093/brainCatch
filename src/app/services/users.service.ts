@@ -19,6 +19,7 @@ export class UsersServicesService {
   usedName : any;
   isRegistered : boolean = false;
   isLogged : boolean = false;
+  userWelcome : boolean = false;
 
 
 

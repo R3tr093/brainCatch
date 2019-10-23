@@ -17,15 +17,22 @@ export class MenuComponent implements OnInit {
   userData : any;
 
 
+
   constructor(private userService : UsersServicesService, private router : Router) { }
 
   ngOnInit() {
  
-    this.showModal("Bonjour " + this.userName + " merci d'utiliser brainCatch.",5000);
+    if(!this.userService.userWelcome)
+    {
+      this.showModal("Bonjour " + this.userName + " merci d'utiliser brainCatch.",5000);
+      this.userService.userWelcome = true;
+    }
+
+    
 
     if(!this.userService.isRegistered && !this.userService.isLogged)
     {
-      window.location.href = "/";
+      //window.location.href = "/";
     }
 
    
@@ -37,6 +44,8 @@ export class MenuComponent implements OnInit {
       this.userData = this.userService.userData;
      
     }
+
+    this.randomStyle();
 
     
   }
@@ -115,6 +124,24 @@ export class MenuComponent implements OnInit {
     document.getElementById('board').style.display = "block";
     
   
+  }
+
+  randomStyle(){
+
+    let elements = document.getElementsByClassName('gamesLinks');
+    
+    let colors = ["cornflowerblue","goldenrod","hotpink","#d1ba79","#e33930"];
+
+
+
+    let i = 0;
+
+    for(i = 0; i < elements.length; i++)
+    {
+      let random = Math.floor(Math.random() * elements.length);
+      elements[i].style.backgroundColor = colors[random];
+    }
+
   }
 
 }

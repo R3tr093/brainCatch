@@ -3,12 +3,15 @@
     height: 20vh;
     width: 30%;
     border-bottom: 2px solid #1761a0;
-    border-right: 2px solid #1761a0;
     position: absolute;
     left: 0px;
     top: 0px;
     z-index: 100;
     display: flex;
+    background: #1761a0;
+    color: white;
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
+    cursor: default;
 }
 
 #menu
@@ -17,7 +20,6 @@
     top: 20vh;
     height: 80vh;
     width: 100%;
-    border: 1px solid black;
     z-index: 50;
 
 
@@ -44,14 +46,19 @@
     flex-direction: column;
     justify-content: center;
     padding-left: 15px;
-    border-left: 2px solid #1761a0;
     margin-left: 15px;
+}
+
+.linkBasic
+{
+    color: white;
 }
 
 .linkBasic:hover
 {
     text-decoration: none;
     font-style: italic;
+    color: antiquewhite;
 }
 
 
@@ -63,7 +70,7 @@
     left: 25%;
     height: 15%;
     width: 50%;
-    border: 1px solid black;
+    border: 2px solid #1761a0;
     
 }
 
@@ -74,7 +81,11 @@
     left: 30%;
     width: 70%;
     height: 20vh;
-    border: 1px solid black;
+    border-bottom: 2px solid #1761a0;
+    background: #1761a0;
+    color: white;
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
+    cursor: default;
 }
 
 #board
@@ -87,6 +98,9 @@
 #tips
 {
     display: none;
+    padding: 16px;
+    margin-top: 15px;
+    font-size: 25px;
 }
 
 .gamesLinks

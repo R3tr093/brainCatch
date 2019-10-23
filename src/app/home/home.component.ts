@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
       this.userService.getUsers();
   }
 
- // These three functions display the Authentication, the logIn form, or the about element by click on button.
+ // These three functions display the Authentication, logIn form, or the about element by click on a button.
  
   displayAbout(){
     let elt = document.getElementById('aboutElt');
@@ -103,7 +103,7 @@ export class HomeComponent implements OnInit {
 
   // Max delay of 12 sec before aborting the post or login request.
 
-  // The two functions belows (log and post ) use the same principles.
+  // These two functions belows (log and post ) use the same principles.
 
   postUser(){
 
@@ -111,6 +111,7 @@ export class HomeComponent implements OnInit {
     
     let name = String((<HTMLInputElement>document.getElementById("name")).value);
 
+    // remove whitespace from string.
     name = name.replace(/\s/g, "");
 
     let password = String((<HTMLInputElement>document.getElementById("password")).value);
@@ -130,7 +131,7 @@ export class HomeComponent implements OnInit {
          }
       }
 
-
+    // The user name provided is already used
     if(nameUsed)
     {
       document.getElementById('postReport').textContent = "";
