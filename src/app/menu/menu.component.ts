@@ -130,6 +130,7 @@ export class MenuComponent implements OnInit {
 
     let elements = document.getElementsByClassName('gamesLinks');
     
+    
     let colors = ["cornflowerblue","goldenrod","hotpink","#d1ba79","#e33930"];
 
 
