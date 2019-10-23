@@ -281,7 +281,7 @@ export class HomeComponent implements OnInit {
         document.getElementById('authReport').textContent = "";
         document.getElementById('authReport').textContent = " Vérification en cours... ";
         
-        console.log(this.count)
+        
       }
 
      }, this.count)

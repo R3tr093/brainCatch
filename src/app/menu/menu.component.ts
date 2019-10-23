@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
+import { HttpClient } from '@angular/common/http';
+
+import { UsersServicesService } from '../services/users.service';
+
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -7,9 +13,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService : UsersServicesService, private router : Router) { }
 
   ngOnInit() {
+    console.log(this.userService.userData)
   }
 
 }
