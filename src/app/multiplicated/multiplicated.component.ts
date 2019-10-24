@@ -17,6 +17,8 @@ export class MultiplicatedComponent implements OnInit {
 
   isCountActive : boolean = false;
 
+  isResolved : boolean = false;
+
 
 
 
@@ -47,7 +49,7 @@ export class MultiplicatedComponent implements OnInit {
 
   getOperation()
   {    
-    
+    this.isResolved = false;
     this.operation = String(this.sum + " x " + this.operator + " = ? ");
     document.getElementById('start').style.display = "none";
     document.getElementById('resetBtn').style.display = " block";
@@ -85,8 +87,9 @@ export class MultiplicatedComponent implements OnInit {
         if(this.countDown > 0)
         {
           this.countDown = this.countDown - 1;
-          console.log(" You get the bonus score champion !")
+          
         }
+
     
       },1000)
 
@@ -98,7 +101,7 @@ export class MultiplicatedComponent implements OnInit {
       clearInterval(interval)
       this.countDown = countValue;
       this.isCountActive = false;
-      console.log("Loosed bonus score ")
+      
 
     }
 
@@ -121,7 +124,7 @@ export class MultiplicatedComponent implements OnInit {
       if(this.sum * this.operator === value)
       {
 
-         
+         this.isResolved = true;
          report.textContent = "";
          report.textContent = " Correct ! ";
          report.style.color = " springgreen";
@@ -159,6 +162,15 @@ export class MultiplicatedComponent implements OnInit {
 
          let erase = (<HTMLInputElement>document.getElementById("response")).value = "";
 
+
+         if(this.isCountActive)
+         {
+          
+          let currentTxt = document.getElementById('report').textContent;
+          
+          document.getElementById('report').textContent = currentTxt + " With bonus score for timer !"
+         }
+
          // Restart a new operation
          this.getOperation();
          
@@ -178,6 +190,8 @@ export class MultiplicatedComponent implements OnInit {
 
         if(this.userLife === 0 )
         {
+          this.countDown = 0;
+          document.getElementById('countDown').textContent = " Terminé !"
 
           if(this.currentScore < 100)
           {
