@@ -171,9 +171,27 @@ app.post("/api/users", function(req, res) {
 
 // -- > Placeholder put and delete request
 
-app.put("/api/users/update", function(req, res) {
+app.put("/api/users/update/:name", function(req, res) {
 
- 
+    if(!req.params.score)
+    {
+      return res.send(400);  
+    }
+
+    collection.findById(req.params.name, function(e,data){  
+      if(e) { return res.send(500, e); } // 1, 2
+
+      if(!data) { return res.send(404); } // 3
+
+      var update = { score : req.body.score}; // 4
+
+      collection.updateById(req.params.name, update, function(err) { // 5
+          if(err) {
+              return res.send(500, err);
+          }
+
+          res.json(data);
+      });
 
 });
 
