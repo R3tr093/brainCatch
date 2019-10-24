@@ -1,10 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 
+import {UsersServicesService} from '../services/users.service';
+
 @Component({
   selector: 'app-multiplicated',
   templateUrl: './multiplicated.component.html',
   styleUrls: ['./multiplicated.component.scss']
 })
+
+
+
+// WHAT WE GET ?
+
+// User has to be connected on his account to play, for each session of multplicate he gain a score.
+
+// For now we don't keep score in the databases, but should coming soon.
+
+// User has to resolve an arithmetic operation, the three first one don't give score point
+
+// After 3 operation resolved user gain score and has a countdown to gain a bonus score point 
+
+
+// WHAT WE WANT
+
+// More animation, and rewrite closure
+
+// And find a secure way to provide score to databases when the backend gonna be ready.
+
+
+
 export class MultiplicatedComponent implements OnInit {
 
   operator : number;
@@ -32,8 +56,13 @@ export class MultiplicatedComponent implements OnInit {
 
   
 
-  constructor() {
-
+  constructor(private userService : UsersServicesService) {
+    
+    
+    if(!this.userService.isRegistered && !this.userService.isLogged)
+    {
+      window.location.href = "/";
+    }
     
   }
 
