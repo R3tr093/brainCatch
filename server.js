@@ -171,7 +171,10 @@ app.post("/api/users", function(req, res) {
 
 // -- > Placeholder put and delete request
 
-app.put("/api/users/:id", function(req, res) {
+app.put("/api/users/update", function(req, res) {
+
+  res.send(req.body)
+
 });
 
 app.delete("/api/users/:id", function(req, res) {

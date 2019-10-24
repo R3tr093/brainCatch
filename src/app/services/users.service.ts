@@ -94,5 +94,21 @@ export class UsersServicesService {
         }
       );
   }
+
+  updateFields(data){
+
+      return this.http.put("https://braincatch.herokuapp.com/api/users/update",data,httpOptions,).subscribe(
+        value => {
+          console.log(value)
+        },
+        error => {
+          console.log(error)
+        }
+      )
+      
+      
+    };
+  
 }
+
 

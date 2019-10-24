@@ -59,6 +59,8 @@ export class MultiplicatedComponent implements OnInit {
 
   currentScore : number = 0;
 
+  postScore : string;
+
   chain : number = 1;
 
   
@@ -260,6 +262,20 @@ export class MultiplicatedComponent implements OnInit {
               this.operation = "Okay, I'm impress. you scored " + String(this.currentScore);
             }
             
+
+            if(this.currentScore > 0)
+            {
+
+            this.postScore = String(this.currentScore);
+
+            console.log("Make request for :: " + this.postScore);
+
+            this.userService.updateFields(this.postScore);
+
+
+            }
+
+
             document.getElementById('countDown').textContent = "Terminé";
           }
   
@@ -274,7 +290,7 @@ export class MultiplicatedComponent implements OnInit {
   }
 
 
-  // Rest the game -- DONE
+  // Reset the game -- DONE
 
   getReset(){
 
