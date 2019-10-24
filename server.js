@@ -193,6 +193,8 @@ app.put("/api/users/update/:name", function(req, res) {
           res.json(data);
       });
 
+      });
+
 });
 
 app.delete("/api/users/:id", function(req, res) {
