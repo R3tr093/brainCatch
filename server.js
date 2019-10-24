@@ -178,14 +178,14 @@ app.put("/api/users/update/:name", function(req, res) {
       return res.send(400);  
     }
 
-    collection.findById(req.params.name, function(e,data){  
+    db.collection.findById(req.params.name, function(e,data){  
       if(e) { return res.send(500, e); } // 1, 2
 
       if(!data) { return res.send(404); } // 3
 
       var update = { score : req.body.score}; // 4
 
-      collection.updateById(req.params.name, update, function(err) { // 5
+      db.collection.updateById(req.params.name, update, function(err) { // 5
           if(err) {
               return res.send(500, err);
           }
