@@ -103,12 +103,55 @@ export class HomeComponent implements OnInit {
   resolveAbout(){
     
     let target = ((<HTMLSelectElement>document.getElementById("questions")).value);
+  
+
+    let response = document.getElementById('response');
+
+ 
+    response.classList.remove('slideInDown')
+    
+    setTimeout(()=>{
 
 
-    if(target === "Pourquoi brainCatch ?")
-    {
-      document.getElementById("response").textContent = " Reponse à la question pourquoi."
-    }
+      if(target === "Pourquoi brainCatch ?")
+      {
+        response.style.display = "block";
+        document.getElementById("response").textContent = " Reponse à la question pourquoi.";
+        response.classList.add('slideInDown');
+      }
+  
+  
+  
+      if(target === "Sur quels appareils puis-je utiliser brainCatch ?")
+      {
+        response.style.display = "block";
+        document.getElementById("response").textContent = " Reponse à la question pourquoi 2222.";
+        response.classList.add('slideInDown');
+      }
+  
+  
+      if(target === "Est t'il possible de participer au projet ?")
+      {
+        response.style.display = "block";
+        document.getElementById("response").textContent = " Reponse à la question pourquoi 3333";
+        response.classList.add('slideInDown');
+      }
+  
+  
+      if(target === "À l'aide j'ai perdu mon mot de passe !")
+      {
+           response.style.display = "block";
+        document.getElementById("response").textContent = " Reponse à la question pourquoi 4444";
+        response.classList.add('slideInDown');
+      }
+
+
+    },200)
+
+
+
+    
+
 
   }
 

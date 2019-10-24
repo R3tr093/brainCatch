@@ -138,6 +138,7 @@ app.post("/api/users", function(req, res) {
   let hash = bcrypt.hashSync(req.body.password, 10);
 
   newUser.password = hash;
+  newUser.score = 0;
   
 
   if (!req.body.name)
