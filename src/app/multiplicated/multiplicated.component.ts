@@ -8,7 +8,7 @@ import {UsersServicesService} from '../services/users.service';
   styleUrls: ['./multiplicated.component.scss']
 })
 
-
+// ------------------------------------------------------------------------------------------------ //
 
 // WHAT WE GET ?
 
@@ -27,6 +27,9 @@ import {UsersServicesService} from '../services/users.service';
 
 // And find a secure way to provide score to databases when the backend gonna be ready.
 
+// ------------------------------------------------------------------------------------------------ //
+
+
 
 
 export class MultiplicatedComponent implements OnInit {
@@ -39,9 +42,13 @@ export class MultiplicatedComponent implements OnInit {
 
   countDown : number;
 
+  isStarted : boolean = false;
+
   isCountActive : boolean = false;
 
   isResolved : boolean = false;
+
+  interval : any;
 
 
 
@@ -61,7 +68,7 @@ export class MultiplicatedComponent implements OnInit {
     
     if(!this.userService.isRegistered && !this.userService.isLogged)
     {
-      window.location.href = "/";
+      //window.location.href = "/";
     }
     
   }
@@ -103,19 +110,20 @@ export class MultiplicatedComponent implements OnInit {
   getCountdown(countValue:number)
   {
     
-    let interval;
+    
     
     this.countDown = countValue;
 
     if(!this.isCountActive)
     {
-        interval = setInterval(()=>{
+        this.interval = setInterval(()=>{
 
      
 
         if(this.countDown > 0)
         {
           this.countDown = this.countDown - 1;
+          document.getElementById('countDown').textContent = String(this.countDown);
           
         }
 
@@ -127,7 +135,7 @@ export class MultiplicatedComponent implements OnInit {
 
     if(this.countDown < 0)
     {
-      clearInterval(interval)
+      clearInterval(this.interval)
       this.countDown = countValue;
       this.isCountActive = false;
       
@@ -144,108 +152,124 @@ export class MultiplicatedComponent implements OnInit {
   onKeydown(event) {
     if (event.key === "Enter") {
       
-     
+      this.isStarted =true;
 
-      let value = Number((<HTMLInputElement>document.getElementById("response")).value);
+      if(this.isStarted && this.userLife > 0)
+      {
+
+
+        let value = Number((<HTMLInputElement>document.getElementById("response")).value);
       
-      let report = document.getElementById('report');
-
-      if(this.sum * this.operator === value)
-      {
-
-         this.isResolved = true;
-         report.textContent = "";
-         report.textContent = " Correct ! ";
-         report.style.color = " springgreen";
-
-
-         // This condition ensure user get score point only if he resolve more than 3 operation and less than 7
-         if(this.chain >= 3 && this.chain < 7)
-         {
-          
-          if(this.countDown > 0)
-          {
-            this.currentScore = this.currentScore + 100;
-          }
-          
-          this.currentScore = this.currentScore + 50;
-         }
-
-         // If user has big chain of operation resolved so the score point we give should be more important
-         if(this.chain >= 7)
-         {
-          
-          if(this.countDown > 0)
-          {
-            this.currentScore = this.currentScore + 100;
-          }
-          
-          this.currentScore = this.currentScore + 100;
-         }
-         
-         
-         this.chain = this.chain + 1;
-
-         this.sum = Number(value);
-
-
-         let erase = (<HTMLInputElement>document.getElementById("response")).value = "";
-
-
-         if(this.isCountActive)
-         {
-          
-          let currentTxt = document.getElementById('report').textContent;
-          
-          document.getElementById('report').textContent = currentTxt + " With bonus score for timer !"
-         }
-
-         // Restart a new operation
-         this.getOperation();
-         
-         
-         
-      }
-
-
-      // 
-      else
-      {
-        report.textContent = "";
-        report.textContent = " Nope ! ";
-        report.style.color = "red";
-        this.userLife = this.userLife - 1;
-        
-
-        if(this.userLife === 0 )
+        let report = document.getElementById('report');
+  
+        if(this.sum * this.operator === value)
         {
-          this.countDown = 0;
-          document.getElementById('countDown').textContent = " Terminé !"
-
-          if(this.currentScore < 100)
-          {
-            this.operation = " Really ?! you scored " + String(this.currentScore);
-          }
-
-          if(this.currentScore >= 100 && this.currentScore < 300)
-          {
-            this.operation = " Well, you try... you scored " + String(this.currentScore);
-          }
-
-          if(this.currentScore >= 300 && this.currentScore < 400)
-          {
-            this.operation = " Not bad, you scored " + String(this.currentScore);
-          }
-
-          if(this.currentScore >= 400)
-          {
-            this.operation = "Okay, I'm impress. you scored " + String(this.currentScore);
-          }
-          
+  
+           this.isResolved = true;
+           report.textContent = "";
+           report.textContent = " Correct ! ";
+           report.style.color = " springgreen";
+  
+  
+           // This condition ensure user get score point only if he resolve more than 3 operation and less than 7
+           if(this.chain >= 3 && this.chain < 7)
+           {
+            
+  
+  
+            if(this.countDown > 0)
+            {
+              this.currentScore = this.currentScore + 100;
+  
+              let currentTxt = document.getElementById('report').textContent;
+               
+              document.getElementById('report').textContent = currentTxt + " With bonus score for timer !"
+              
+            }
+            
+            this.currentScore = this.currentScore + 50;
+           }
+  
+           // If user has big chain of operation resolved so the score point we give should be more important
+           if(this.chain >= 7)
+           {
+            
+            if(this.countDown > 0)
+            {
+              this.currentScore = this.currentScore + 100;
+  
+              let currentTxt = document.getElementById('report').textContent;
+               
+              document.getElementById('report').textContent = currentTxt + " With bonus score for timer !"
+            }
+            
+            this.currentScore = this.currentScore + 100;
+           }
+           
+           
+           this.chain = this.chain + 1;
+  
+           this.sum = Number(value);
+  
+  
+           let erase = (<HTMLInputElement>document.getElementById("response")).value = "";
+  
+  
+  
+  
+           // Restart a new operation
+           this.getOperation();
+           
+           
+           
         }
+  
+  
+        
+        else
+        {
+          report.textContent = "";
+          report.textContent = " Nope ! ";
+          report.style.color = "red";
+          this.userLife = this.userLife - 1;
+          
+  
+          if(this.userLife === 0 )
+          {
+            this.countDown = 0;
+            clearInterval(this.interval);
+           
+  
+            if(this.currentScore < 100)
+            {
+              this.operation = " Really ?! you scored " + String(this.currentScore);
+            }
+  
+            if(this.currentScore >= 100 && this.currentScore < 300)
+            {
+              this.operation = " Well, you try... you scored " + String(this.currentScore);
+            }
+  
+            if(this.currentScore >= 300 && this.currentScore < 400)
+            {
+              this.operation = " Not bad, you scored " + String(this.currentScore);
+            }
+  
+            if(this.currentScore >= 400)
+            {
+              this.operation = "Okay, I'm impress. you scored " + String(this.currentScore);
+            }
+            
+            document.getElementById('countDown').textContent = "Terminé";
+          }
+  
+        }
+  
+
 
       }
 
+     
     }
   }
 
@@ -255,6 +279,9 @@ export class MultiplicatedComponent implements OnInit {
   getReset(){
 
     let erase = (<HTMLInputElement>document.getElementById("response")).value = "";
+    document.getElementById('report').textContent = "";
+    document.getElementById('countDown').textContent = " ";
+    
     this.operator =  Math.floor(Math.random() * 7);
     this.operator = this.operator + 2;
     this.sum = 1;
@@ -263,6 +290,8 @@ export class MultiplicatedComponent implements OnInit {
     this.currentScore = 0;
     this.userLife = 1;
 
+    this.isCountActive = false;
+    
     this.getOperation();
 
 
