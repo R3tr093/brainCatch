@@ -5,21 +5,21 @@
 
         <h1>Multiplicate </h1>
 
-        <p id="operation"> 5 x 2 = ?</p>
+        <p id="operation"> {{operation}} </p>
 
         <div id="answerElt">
                 
                 <label>Votre réponse : </label><br>
                 
-                <p id="report"><em>Correct</em></p>
+                <p id="report"><em></em></p>
                 
-                <input class="shadow" type="text">
+                <input  (keydown)="onKeydown($event)" class="shadow" type="text" id="response">
 
         </div>
 
         
 
-            <p id="countDown" title="Décompte pour les points bonus."> 8</p>
+            <p id="countDown" title="Décompte pour les points bonus."> Nevermind for now : 8</p>
 
       
       
@@ -41,11 +41,12 @@
 
         <div id="score" title="Votre score.">
 
-            135
+            {{currentScore}}
 
         </div>
 
-        <button id="start">Play</button>
+        <button (click)="getOperation()" id="start">Play</button>
+        <button (click)="getReset()" id="resetBtn">Reset</button>
         <a routerLink="/Menu" routerLinkActive="active"  id="home" title="Retour au menu ? "></a>
 
 

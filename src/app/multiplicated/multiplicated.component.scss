@@ -116,6 +116,22 @@ h1
     box-shadow: 0px 0px 16px #CCC;
 }
 
+#resetBtn
+{
+    height: 67px;
+    width: 67px;
+    border-radius: 50%;
+    background: springgreen;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    border: white;
+    margin-top: 45px;
+    position: relative;
+    left: 10%;
+    box-shadow: 0px 0px 16px #CCC;
+    display: none;
+}
+
 #home
 {
     height: 67px;
