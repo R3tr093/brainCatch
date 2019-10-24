@@ -14,11 +14,13 @@ import { HomeComponent } from './home/home.component';
 
 
 import {UsersServicesService} from './services/users.service';
+import { MultiplicatedComponent } from './multiplicated/multiplicated.component';
 
 const appRoutes: Routes = [
   { path: '',      component: HomeComponent},
   { path: 'Demo',      component: DemoComponent},
-  { path: 'Menu', component: MenuComponent}
+  { path: 'Menu', component: MenuComponent},
+  { path: 'Multiplicate', component: MultiplicatedComponent}
 
 ];
 
@@ -30,7 +32,8 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     MenuComponent,
-    DemoComponent
+    DemoComponent,
+    MultiplicatedComponent
   ],
   imports: [
     BrowserModule,

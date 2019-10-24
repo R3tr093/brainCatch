@@ -24,7 +24,7 @@ export class MenuComponent implements OnInit {
  
     if(!this.userService.isRegistered && !this.userService.isLogged)
     {
-      window.location.href = "/";
+      //window.location.href = "/";
     }
 
    
@@ -127,11 +127,8 @@ export class MenuComponent implements OnInit {
   randomStyle(){
 
     let elements = document.getElementsByClassName('gamesLinks');
-    
-    
+        
     let colors = ["cornflowerblue","goldenrod","hotpink","#d1ba79","#e33930"];
-
-
 
     let i = 0;
 

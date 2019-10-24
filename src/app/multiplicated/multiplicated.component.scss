@@ -1,0 +1,145 @@
+main
+{
+    background: #1761a0;
+}
+
+
+#gameBoard
+{
+    height: 80vh;
+    border-bottom: 4px solid antiquewhite;
+    background: white;
+}
+
+h1
+{
+    font-style: italic;
+    font-family: 'Raleway', Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-top: 30px;
+    cursor: default;
+}
+
+#operation
+{
+    font-style: italic;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 42px;
+    position: relative;
+    top: 30%;
+    cursor: default;
+}
+
+#answerElt
+{
+    font-style: italic;
+    font-family: 'Raleway', Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 22px;
+    position: relative;
+    top: 40%;
+}
+
+#countDown
+{
+    font-style: italic;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    font-size: 32px;
+    position: relative;
+    top: 50%;
+    cursor: default;
+}
+
+
+#report
+{
+    color: goldenrod;
+    font-style: italic;
+    font-family: 'Raleway', Arial, Helvetica, sans-serif;
+    cursor: default;
+}
+
+#infoBoard
+{
+    height: 20vh;
+    background-color: #1761a0;
+    display: flex;
+    cursor: default;
+    
+}
+
+#infoGame
+{
+    text-align: center;
+    width: 40%;
+    height: 165px;
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    overflow-y: scroll;
+    font-family: 'Raleway', Arial, Helvetica, sans-serif;
+    cursor: default;
+
+
+}
+
+#score
+{
+    text-align: center;
+    width: 20%;
+    height: 165px;
+    padding-top: 67.5px;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 30px;
+    border-right: white 8px solid;
+    cursor: default;
+  
+}
+
+#start
+{
+    height: 67px;
+    width: 67px;
+    border-radius: 50%;
+    background: springgreen;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    border: white;
+    margin-top: 45px;
+    position: relative;
+    left: 10%;
+    box-shadow: 0px 0px 16px #CCC;
+}
+
+#home
+{
+    height: 67px;
+    width: 67px;
+    border-radius: 50%;
+    background: springgreen;
+    background-image: url('../../assets/home.png');
+    background-repeat: no-repeat;
+    background-size: 33px 33px;
+    background-position: center;
+    border: white;
+    margin-top: 45px;
+    position: relative;
+    left: 20%;
+    cursor: pointer;
+    box-shadow: 0px 0px 16px #CCC;
+}
+
+input
+{
+    border: 2px solid #1761a0;
+    border-radius: 6px;
+    font-style: italic;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
