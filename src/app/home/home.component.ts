@@ -100,6 +100,18 @@ export class HomeComponent implements OnInit {
   }
 
 
+  resolveAbout(){
+    
+    let target = ((<HTMLSelectElement>document.getElementById("questions")).value);
+
+
+    if(target === "Pourquoi brainCatch ?")
+    {
+      document.getElementById("response").textContent = " Reponse à la question pourquoi."
+    }
+
+  }
+
 
   // Max delay of 12 sec before aborting the post or login request.
 
