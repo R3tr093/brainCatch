@@ -185,7 +185,7 @@ app.put("/api/users/update/:name", function(req, res) {
 
       var update = { score : req.body.score}; // 4
 
-      db.collection(USERS_COLLECTION).updateById(req.params.name, update, function(err) { // 5
+      db.collection(USERS_COLLECTION).update(req.params.name, update, function(err) { // 5
           if(err) {
               return res.send(500, err);
           }
