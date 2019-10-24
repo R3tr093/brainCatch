@@ -178,7 +178,7 @@ app.put("/api/users/update/:name", function(req, res) {
       return res.send(400);  
     }
 
-    db.collection.findById(req.params.name, function(e,data){  
+    db.collection(USERS_COLLECTION).findById(req.params.name, function(e,data){  
       if(e) { return res.send(500, e); } // 1, 2
 
       if(!data) { return res.send(404); } // 3
