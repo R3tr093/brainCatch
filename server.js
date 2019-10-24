@@ -183,7 +183,7 @@ app.put("/api/users/update/:name", function(req, res) {
       
       if(!data) { return res.send(404); } // 3
 
-      var update = { score : req.body.score}; // 4
+      var update = { score : 600}; // 4
 
       db.collection(USERS_COLLECTION).update(req.params.name, update, function(err) { // 5
           if(err) {
