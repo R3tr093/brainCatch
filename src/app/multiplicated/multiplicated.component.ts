@@ -8,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class MultiplicatedComponent implements OnInit {
 
   operator : number;
+
   sum : number = 1;
+  
   operation : string;
+
+  countDown : number;
+
+  isCountActive : boolean = false;
+
 
 
 
@@ -40,19 +47,72 @@ export class MultiplicatedComponent implements OnInit {
 
   getOperation()
   {    
+    
     this.operation = String(this.sum + " x " + this.operator + " = ? ");
     document.getElementById('start').style.display = "none";
     document.getElementById('resetBtn').style.display = " block";
+    document.getElementById('countDown').style.display = " block";
 
+
+    if(this.chain >= 3)
+    {
+      this.getCountdown(8);
+    }
+
+    if(this.chain >= 7)
+    {
+      this.getCountdown(15);
+    }
+    
+
+  }
+
+
+
+  getCountdown(countValue:number)
+  {
+    
+    let interval;
+    
+    this.countDown = countValue;
+
+    if(!this.isCountActive)
+    {
+        interval = setInterval(()=>{
+
+     
+
+        if(this.countDown > 0)
+        {
+          this.countDown = this.countDown - 1;
+          console.log(" You get the bonus score champion !")
+        }
+    
+      },1000)
+
+      this.isCountActive = true;
+    }
+
+    if(this.countDown < 0)
+    {
+      clearInterval(interval)
+      this.countDown = countValue;
+      this.isCountActive = false;
+      console.log("Loosed bonus score ")
+
+    }
 
 
   }
+
+ 
 
 
 
   onKeydown(event) {
     if (event.key === "Enter") {
       
+     
 
       let value = Number((<HTMLInputElement>document.getElementById("response")).value);
       
@@ -60,21 +120,35 @@ export class MultiplicatedComponent implements OnInit {
 
       if(this.sum * this.operator === value)
       {
+
+         
          report.textContent = "";
          report.textContent = " Correct ! ";
          report.style.color = " springgreen";
-         
+
 
          // This condition ensure user get score point only if he resolve more than 3 operation and less than 7
-         if(this.chain > 3 && this.chain < 7)
+         if(this.chain >= 3 && this.chain < 7)
          {
-           this.currentScore = this.currentScore + 50;
+          
+          if(this.countDown > 0)
+          {
+            this.currentScore = this.currentScore + 100;
+          }
+          
+          this.currentScore = this.currentScore + 50;
          }
 
          // If user has big chain of operation resolved so the score point we give should be more important
          if(this.chain >= 7)
          {
-           this.currentScore = this.currentScore + 100;
+          
+          if(this.countDown > 0)
+          {
+            this.currentScore = this.currentScore + 100;
+          }
+          
+          this.currentScore = this.currentScore + 100;
          }
          
          
@@ -87,6 +161,7 @@ export class MultiplicatedComponent implements OnInit {
 
          // Restart a new operation
          this.getOperation();
+         
          
          
       }
@@ -106,22 +181,22 @@ export class MultiplicatedComponent implements OnInit {
 
           if(this.currentScore < 100)
           {
-            this.operation = " Really ?!"
+            this.operation = " Really ?! you scored " + String(this.currentScore);
           }
 
           if(this.currentScore >= 100 && this.currentScore < 300)
           {
-            this.operation = " Well, you try..."
+            this.operation = " Well, you try... you scored " + String(this.currentScore);
           }
 
           if(this.currentScore >= 300 && this.currentScore < 400)
           {
-            this.operation = " Not bad."
+            this.operation = " Not bad, you scored " + String(this.currentScore);
           }
 
           if(this.currentScore >= 400)
           {
-            this.operation = "Okay, I'm impress."
+            this.operation = "Okay, I'm impress. you scored " + String(this.currentScore);
           }
           
         }
@@ -136,10 +211,11 @@ export class MultiplicatedComponent implements OnInit {
 
   getReset(){
 
-
+    let erase = (<HTMLInputElement>document.getElementById("response")).value = "";
     this.operator =  Math.floor(Math.random() * 7);
     this.operator = this.operator + 2;
     this.sum = 1;
+    this.chain = 1;
 
     this.currentScore = 0;
     this.userLife = 1;
