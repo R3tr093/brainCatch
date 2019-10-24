@@ -8,30 +8,6 @@ import {UsersServicesService} from '../services/users.service';
   styleUrls: ['./multiplicated.component.scss']
 })
 
-// ------------------------------------------------------------------------------------------------ //
-
-// WHAT WE GET ?
-
-// User has to be connected on his account to play, for each session of multplicate he gain a score.
-
-// For now we don't keep score in the databases, but should coming soon.
-
-// User has to resolve an arithmetic operation, the three first one don't give score point
-
-// After 3 operation resolved user gain score and has a countdown to gain a bonus score point 
-
-
-// WHAT WE WANT
-
-// More animation, and rewrite closure
-
-// And find a secure way to provide score to databases when the backend gonna be ready.
-
-// ------------------------------------------------------------------------------------------------ //
-
-
-
-
 export class MultiplicatedComponent implements OnInit {
 
   operator : number;

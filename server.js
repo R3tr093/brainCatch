@@ -173,7 +173,7 @@ app.post("/api/users", function(req, res) {
 
 app.put("/api/users/update", function(req, res) {
 
-  res.send(req.body)
+ 
 
 });
 

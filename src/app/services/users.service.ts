@@ -46,7 +46,6 @@ export class UsersServicesService {
   getUser(param){
     return this.http.get('https://braincatch.herokuapp.com/api/users/' + param).subscribe(
         value => {
-          console.log(value)
           this.userData = value;
 
         },
@@ -97,7 +96,8 @@ export class UsersServicesService {
 
   updateFields(data){
 
-      return this.http.put("https://braincatch.herokuapp.com/api/users/" + this.userData.name,data,httpOptions,).subscribe(
+      console.log(this.userData)
+      return this.http.put("https://braincatch.herokuapp.com/api/users/",data,httpOptions,).subscribe(
         value => {
           console.log(value)
         },
