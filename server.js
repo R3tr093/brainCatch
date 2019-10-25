@@ -173,20 +173,6 @@ app.post("/api/users", function(req, res) {
 
 app.put("/api/users/update", function(req, res) {
 
-    
-  db.collection(USERS_COLLECTION).find({name: 'secret'}).toArray(function(err, docs) {
-    
-    // Credentials not found in the DB.
-    if (err) 
-    {
-      handleError(res, err.message, "Failed to get user credentials...");
-      
-    } 
-
-
-    });
-
-
 
       db.collection(USERS_COLLECTION).update({ "name": "secret"},
    { "score": "100" },
