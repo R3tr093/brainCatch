@@ -209,13 +209,11 @@ app.put("/api/users/math/update", function(req, res) {
      {
         res.status(200).json(docs);  
 
-        let current = score + Number(docs[0].mathScore); 
+        let current = Number(score) + Number(docs[0].mathScore); 
 
-        let global = Number(docs[0].score) + score;
-        
+        let global = Number(docs[0].score) + Number(score);
         
         current = String(current);
-
 
         global = String(global)
 
