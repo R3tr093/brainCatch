@@ -174,6 +174,11 @@ app.post("/api/users", function(req, res) {
 
 app.put("/api/users/math/update", function(req, res) {
 
+
+
+
+
+
   if(!req.body.score)
   {
     handleError(res, "Missing score value ", "Must provide a value to increment.", 400);
@@ -189,6 +194,26 @@ app.put("/api/users/math/update", function(req, res) {
   {
     handleError(res, "Missing name credentials. ", "Must provide an user name .", 400);
   }
+
+  db.collection(USERS_COLLECTION).find({name: req.body.name}).toArray(function(err, docs) {
+    
+    // Credentials not found in the DB.
+    if (err) 
+    {
+      handleError(res, err.message, "Failed to get user credentials...");
+    } 
+    
+    // Compare hash.
+    else 
+     {
+        res.status(200).json(docs);    
+        let current = Number(docs[0].mathScore); 
+        
+        current = Number(current + req.body.mathScore);
+        current = String(current);
+        req.body.mathScore = current;
+     }
+   });
 
       db.collection(USERS_COLLECTION).update({ "name": req.body.name},
    {$set: {"score": req.body.score, "mathScore": req.body.mathScore}},
