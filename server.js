@@ -201,7 +201,7 @@ app.put("/api/users/update/:name", function(req, res) {
       
     } 
 
-    res.status(200).json(docs);
+    res.status(200).json(data);
 
 
     }))
