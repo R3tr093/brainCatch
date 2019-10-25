@@ -178,20 +178,17 @@ app.put("/api/users/update/:name", function(req, res) {
       return res.send(400);  
     }
 
-    db.collection(USERS_COLLECTION).find({name: req.params.name}, function(e,data){  
+    db.collection(USERS_COLLECTION).find({name: "secret"}, function(e,data){  
       if(e) { return res.send(500, e); } // 1, 2
       
       if(!data) { return res.send(404); } // 3
 
       var update = { score : 600}; // 4
 
-      db.collection(USERS_COLLECTION).updateOne({name: 'secret'}, {score: "600"},function(err) { // 5
-          if(err) {
-              return res.send(500, err);
-          }
+
 
           res.json(data);
-      });
+     
 
       });
 
