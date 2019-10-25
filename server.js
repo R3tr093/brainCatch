@@ -138,8 +138,8 @@ app.post("/api/users", function(req, res) {
   let hash = bcrypt.hashSync(req.body.password, 10);
 
   newUser.password = hash;
-  newUser.mathScore = "0";
-  newUser.score = "0";
+  newUser.mathScore = 0;
+  newUser.score = 0;
   
 
   if (!req.body.name)
@@ -209,13 +209,10 @@ app.put("/api/users/math/update", function(req, res) {
      {
         res.status(200).json(docs);  
 
-        let current = Number(Number(score) + Number(docs[0].mathScore)); 
+        let current = score + Number(docs[0].mathScore); 
 
-        let global = Number(Number(docs[0].score) + Number(score));
-        
-        current = String(current);
+        let global = (Number(docs[0].score) + (score));
 
-        global = String(global)
 
         db.collection(USERS_COLLECTION).update({ "name": req.body.name},
         {$set: {"score": global, "mathScore": current}},
