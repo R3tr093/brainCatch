@@ -73,7 +73,8 @@ export class MenuComponent implements OnInit {
 
         setTimeout(()=> {
 
-          var elem = document.getElementById("modal");
+          var elem = (<HTMLElement>document.getElementById("modal"));
+          
           
           var pos = 83;
 
