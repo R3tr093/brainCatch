@@ -190,11 +190,9 @@ app.put("/api/users/update/:name", function(req, res) {
 
 
     const filter = { name: 'secret' };
-    const update = { age: "150" };
+    const update = { score: "150" };
 
-    db.collection(USERS_COLLECTION).findOneAndUpdate(filter, update,{
-      new: true
-    },(function(err, data){
+    db.collection(USERS_COLLECTION).findOneAndUpdate(filter, update,{new: true},(function(err, data){
 
       
       if (err) 
