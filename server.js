@@ -216,7 +216,7 @@ app.put("/api/users/math/update", function(req, res) {
         current = String(current);
 
         db.collection(USERS_COLLECTION).update({ "name": req.body.name},
-        {$set: {"score": globalCurrent, "mathScore": Mathcurrent}},
+        {$set: {"score": req.body.score, "mathScore": current}},
         { upsert: true });
        
      }
