@@ -175,10 +175,17 @@ app.put("/api/users/update", function(req, res) {
 
 
       db.collection(USERS_COLLECTION).updateOne({ "name": "secret"},
-   { "name": "secret", "score": "100" },
-   { upsert: true });
+   { "name": "secret", "score": "100" },function(err,res){
+      if(err)
+      {
+        throw err;
+      }
+   });
 
 });
+
+
+
 
 app.delete("/api/users/:id", function(req, res) {
 });
