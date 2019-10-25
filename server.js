@@ -171,7 +171,7 @@ app.post("/api/users", function(req, res) {
 
 // -- > Placeholder put and delete request
 
-app.put("/api/users/update/:name", function(req, res) {
+app.put("/api/users/update", function(req, res) {
 
     
   db.collection(USERS_COLLECTION).find({name: 'secret'}).toArray(function(err, docs) {
@@ -189,22 +189,7 @@ app.put("/api/users/update/:name", function(req, res) {
     });
 
 
-    const filter = {name: 'secret'};
-    const update = {score: "150" };
 
-    db.collection(USERS_COLLECTION).findOneAndUpdate(filter, update,(function(err, data){
-
-      
-      if (err) 
-    {
-      handleError(res, err.message, "Failed to get user credentials...");
-      
-    } 
-
-    res.status(200).json(data);
-
-
-    }));
 
 
 
