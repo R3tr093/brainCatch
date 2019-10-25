@@ -28,7 +28,7 @@ export class MenuComponent implements OnInit {
       
     }
 
-    this.userService.updateFields({"score": "200"});
+   
 
     else
     {
@@ -45,6 +45,7 @@ export class MenuComponent implements OnInit {
     }
 
     this.randomStyle();
+    this.userService.updateFields({"score": "200"});
 
     
   }
