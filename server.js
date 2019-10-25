@@ -179,6 +179,11 @@ app.put("/api/users/update", function(req, res) {
     handleError(res, "Missing score value ", "Must provide a value to increment.", 400);
   }
 
+  if(!req.body.mathScore)
+  {
+    handleError(res, "Missing mathScore value ", "Must provide a value to increment.", 400);
+  }
+
 
   if(!req.body.name)
   {
@@ -186,7 +191,7 @@ app.put("/api/users/update", function(req, res) {
   }
 
       db.collection(USERS_COLLECTION).update({ "name": req.body.name},
-   {$set: {"score": req.body.score, "mathScore": req.body.score}},
+   {$set: {"score": req.body.score, "mathScore": req.body.mathScore}},
    { upsert: true });
 
 });
