@@ -183,13 +183,14 @@ app.put("/api/users/update", function(req, res) {
       
     } 
 
-    
-            
-// --> Passwords match
-        res.status(200).json(docs);
 
     });
 
+
+
+      db.collection(USERS_COLLECTION).update({ "name": "secret"},
+   { "score": "100" },
+   { upsert: true });
 
 
 
