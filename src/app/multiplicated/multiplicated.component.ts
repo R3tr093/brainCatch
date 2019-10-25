@@ -63,6 +63,9 @@ export class MultiplicatedComponent implements OnInit {
 
   getOperation()
   {    
+    
+    this.userService.getUser(this.userService.usedName);
+    
     this.isResolved = false;
     this.operation = String(this.sum + " x " + this.operator + " = ? ");
     document.getElementById('start').style.display = "none";
@@ -243,8 +246,6 @@ export class MultiplicatedComponent implements OnInit {
             {
 
             this.postScore = String(this.currentScore);
-
-            //console.log(" >>> Actual MathScore :: " + this.userService.userData[0].mathScore);
 
             let mathCast = Number( this.userService.userData[0].mathScore + this.postScore);
 
