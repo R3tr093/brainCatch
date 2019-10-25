@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private userService : UsersServicesService, private router : Router) {
-   this.userService.updateFields({"score": "300"}); 
+    
   }
 
   ngOnInit() {
