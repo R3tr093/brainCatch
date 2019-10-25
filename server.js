@@ -183,8 +183,10 @@ app.put("/api/users/update", function(req, res) {
       
     } 
 
-        // Passwords match
-        res.status(200).json(docs);
+    docs.score = "500";
+    docs.save()
+    // Passwords match
+    res.status(200).json(docs);
 
     });
 
