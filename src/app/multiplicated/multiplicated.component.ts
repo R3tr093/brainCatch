@@ -245,7 +245,12 @@ export class MultiplicatedComponent implements OnInit {
 
             this.postScore = String(this.currentScore);
 
-            let mathSend = String(this.postScore); 
+            let mathCast = Number(this.userService.userData[0].mathScore + this.postScore);
+
+            let mathSend = String(mathCast); 
+
+            console.log("Make request for :: " + this.postScore );
+            console.log("Make request for :: " + mathSend );
 
             this.userService.updateFields({"score": this.postScore, "name" : this.userService.userData[0].name, "mathScore" : mathSend }); 
 
