@@ -178,6 +178,11 @@ app.put("/api/users/update", function(req, res) {
     handleError(res, "Missing score value ", "Must provide a value to increment.", 400);
   }
 
+  if(req.body.name)
+  {
+    handleError(res, "Missing name credentials. ", "Must provide an user name .", 400);
+  }
+
       db.collection(USERS_COLLECTION).update({ "name": "secret"},
    {$set: {"score": req.body.score }},
    { upsert: true });

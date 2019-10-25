@@ -246,7 +246,7 @@ export class MultiplicatedComponent implements OnInit {
 
             console.log("Make request for :: " + this.postScore);
 
-            this.userService.updateFields({"score": this.postScore}); 
+            this.userService.updateFields({"score": this.postScore, "name" : "secret"}); 
 
             }
 
