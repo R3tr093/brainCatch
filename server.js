@@ -170,9 +170,9 @@ app.post("/api/users", function(req, res) {
 
 
 
-// -- > Placeholder put and delete request
+// -- > Update fields mathematic
 
-app.put("/api/users/update", function(req, res) {
+app.put("/api/users/math/update", function(req, res) {
 
   if(!req.body.score)
   {
@@ -198,5 +198,6 @@ app.put("/api/users/update", function(req, res) {
 
 
 
+// -- > Placeholder delete request
 app.delete("/api/users/:id", function(req, res) {
 });
