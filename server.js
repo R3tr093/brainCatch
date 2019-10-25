@@ -138,7 +138,7 @@ app.post("/api/users", function(req, res) {
   let hash = bcrypt.hashSync(req.body.password, 10);
 
   newUser.password = hash;
-  newUser.score = 0;
+  newUser.score = "0";
   
 
   if (!req.body.name)
@@ -183,10 +183,10 @@ app.put("/api/users/update", function(req, res) {
       
     } 
 
-  
     docs.save()
-    // Passwords match
-    res.status(200).json(docs);
+            
+// Passwords match
+        res.status(200).json(docs);
 
     });
 
