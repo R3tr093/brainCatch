@@ -35,7 +35,7 @@ export class MultiplicatedComponent implements OnInit {
 
   currentScore : number = 0;
 
-  postScore : string;
+  postScore : number;
 
   chain : number = 1;
 
