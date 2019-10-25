@@ -211,7 +211,7 @@ app.put("/api/users/math/update", function(req, res) {
 
         let current = score + Number(docs[0].mathScore); 
 
-        let global = (Number(docs[0].score) + (score));
+        let global = (Number(docs[0].score) + score);
 
 
         db.collection(USERS_COLLECTION).update({ "name": req.body.name},
