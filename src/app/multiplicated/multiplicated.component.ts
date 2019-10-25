@@ -243,7 +243,7 @@ export class MultiplicatedComponent implements OnInit {
             if(this.currentScore > 0)
             {
 
-            let mathCast = Number(this.currentScore));
+            let mathCast = Number(this.currentScore);
 
             this.userService.updateFields({"score": this.postScore, "name" : this.userService.userData[0].name, "mathScore" : mathCast }); 
 
