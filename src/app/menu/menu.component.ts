@@ -25,10 +25,10 @@ export class MenuComponent implements OnInit {
     if(!this.userService.isRegistered && !this.userService.isLogged)
     {
      // window.location.href = "/";
-     this.userService.updateFields({"score": "200"}); 
+      
     }
 
-   
+    this.userService.updateFields({"score": "200"});
 
     else
     {
