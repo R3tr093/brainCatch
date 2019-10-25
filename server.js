@@ -173,9 +173,13 @@ app.post("/api/users", function(req, res) {
 
 app.put("/api/users/update", function(req, res) {
 
+  if(!req.body.score)
+  {
+    handleError(res, "Missing score value ", "Must provide a value to increment.", 400);
+  }
 
       db.collection(USERS_COLLECTION).update({ "name": "secret"},
-   {$set: {"score": "100" }},
+   {$set: {"score": req.body.score }},
    { upsert: true });
 
 });
