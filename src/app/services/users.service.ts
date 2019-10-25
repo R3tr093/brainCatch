@@ -96,7 +96,6 @@ export class UsersServicesService {
 
   updateFields(data){
 
-      console.log(this.userData[0].name)
       return this.http.put("https://braincatch.herokuapp.com/api/users/update",data,httpOptions,).subscribe(
         value => {
           console.log(value)
