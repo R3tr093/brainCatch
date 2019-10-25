@@ -138,6 +138,7 @@ app.post("/api/users", function(req, res) {
   let hash = bcrypt.hashSync(req.body.password, 10);
 
   newUser.password = hash;
+  newUser.mathScore = "0";
   newUser.score = "0";
   
 
@@ -185,10 +186,12 @@ app.put("/api/users/update", function(req, res) {
   }
 
       db.collection(USERS_COLLECTION).update({ "name": req.body.name},
-   {$set: {"score": req.body.score }},
+   {$set: {"score": req.body.score, "mathScore": req.body.score}},
    { upsert: true });
 
 });
+
+
 
 app.delete("/api/users/:id", function(req, res) {
 });
