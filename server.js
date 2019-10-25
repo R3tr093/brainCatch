@@ -189,6 +189,7 @@ app.put("/api/users/math/update", function(req, res) {
     handleError(res, "Missing mathScore value ", "Must provide a value to increment.", 400);
   }
 
+  let score = Number(req.body.mathScore);
 
   if(!req.body.name)
   {
@@ -203,21 +204,22 @@ app.put("/api/users/math/update", function(req, res) {
       handleError(res, err.message, "Failed to get user credentials...");
     } 
     
-    // Compare hash.
+  
     else 
      {
-        res.status(200).json(docs);    
-        let current = Number(docs[0].mathScore); 
+        res.status(200).json(docs[0].mathScore);    
+        let current = score + Number(docs[0].mathScore); 
         
-        current = Number(current + req.body.mathScore);
         current = String(current);
-        req.body.mathScore = current;
+
+        db.collection(USERS_COLLECTION).update({ "name": req.body.name},
+        {$set: {"score": req.body.score, "mathScore": current}},
+        { upsert: true });
+       
      }
    });
 
-      db.collection(USERS_COLLECTION).update({ "name": req.body.name},
-   {$set: {"score": req.body.score, "mathScore": req.body.mathScore}},
-   { upsert: true });
+      
 
 });
 
