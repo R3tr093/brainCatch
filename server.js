@@ -211,7 +211,7 @@ app.put("/api/users/math/update", function(req, res) {
         
         let Mathcurrent = score + Number(docs[0].mathScore); 
         
-        let globalCurrent = score + Number(docs[0].score);
+      
 
         current = String(current);
 
