@@ -242,7 +242,7 @@ export class MultiplicatedComponent implements OnInit {
             {
 
 
-            this.userService.updateFields({"score": this.currentScore, "name" : this.userService.userData[0].name, "mathScore" : this.currentScore }); 
+            this.userService.updateFields({"score": this.currentScore, "name" : this.userService.userData[0].name}); 
 
             }
 

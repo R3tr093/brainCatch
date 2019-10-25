@@ -184,13 +184,6 @@ app.put("/api/users/math/update", function(req, res) {
     handleError(res, "Missing score value ", "Must provide a value to increment.", 400);
   }
 
-  if(!req.body.mathScore)
-  {
-    handleError(res, "Missing mathScore value ", "Must provide a value to increment.", 400);
-  }
-
-  let score = Number(req.body.mathScore);
-
   if(!req.body.name)
   {
     handleError(res, "Missing name credentials. ", "Must provide an user name .", 400);
