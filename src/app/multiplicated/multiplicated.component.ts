@@ -64,7 +64,7 @@ export class MultiplicatedComponent implements OnInit {
   getOperation()
   {    
     
-    this.userService.getUser(this.userService.usedName);
+    this.userService.getUser(String(this.userService.usedName));
     
     this.isResolved = false;
     this.operation = String(this.sum + " x " + this.operator + " = ? ");
@@ -245,9 +245,12 @@ export class MultiplicatedComponent implements OnInit {
             if(this.currentScore > 0)
             {
 
+
+              console.log(this.userService.userData)
+
             this.postScore = String(this.currentScore);
 
-            let mathCast = Number( this.userService.userData[0].mathScore + this.postScore);
+            let mathCast = Number(this.userService.userData[0].mathScore + this.postScore);
 
             let mathSend = String(mathCast); 
 
