@@ -45,7 +45,7 @@ export class MenuComponent implements OnInit {
     }
 
     this.randomStyle();
-    this.userService.updateFields({"score": "200"});
+    //this.userService.updateFields({"score": "200"});
 
     
   }
