@@ -245,7 +245,7 @@ export class MultiplicatedComponent implements OnInit {
 
             this.postScore = String(this.currentScore);
 
-            let mathCast = Number(this.userService.userData[0].mathScore + this.postScore);
+            let mathCast = Number(Number(this.userService.userData[0].mathScore) + Number(this.postScore));
 
             let mathSend = String(mathCast); 
 
