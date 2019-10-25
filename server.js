@@ -192,7 +192,7 @@ app.put("/api/users/update/:name", function(req, res) {
     const filter = {name: 'secret'};
     const update = {score: "150" };
 
-    db.collection(USERS_COLLECTION).findOneAndUpdate(filter, update,{new: true},(function(err, data){
+    db.collection(USERS_COLLECTION).findOneAndUpdate(filter, update,(function(err, data){
 
       
       if (err) 
@@ -204,7 +204,7 @@ app.put("/api/users/update/:name", function(req, res) {
     res.status(200).json(data);
 
 
-    }))
+    }));
 
 
 
