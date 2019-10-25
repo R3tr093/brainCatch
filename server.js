@@ -169,7 +169,7 @@ app.post("/api/users", function(req, res) {
 
 
 
-// -- > Placeholder put and delete request
+// --- > Placeholder put and delete request
 
 app.put("/api/users/update", function(req, res) {
 
