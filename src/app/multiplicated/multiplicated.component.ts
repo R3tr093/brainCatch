@@ -35,8 +35,6 @@ export class MultiplicatedComponent implements OnInit {
 
   currentScore : number = 0;
 
-  postScore : number;
-
   chain : number = 1;
 
   
@@ -243,9 +241,8 @@ export class MultiplicatedComponent implements OnInit {
             if(this.currentScore > 0)
             {
 
-            let mathCast = Number(this.currentScore);
 
-            this.userService.updateFields({"score": this.postScore, "name" : this.userService.userData[0].name, "mathScore" : mathCast }); 
+            this.userService.updateFields({"score": this.currentScore, "name" : this.userService.userData[0].name, "mathScore" : this.currentScore }); 
 
             }
 
