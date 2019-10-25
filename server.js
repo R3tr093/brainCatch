@@ -175,7 +175,7 @@ app.put("/api/users/update", function(req, res) {
 
 
       db.collection(USERS_COLLECTION).update({ "name": "secret"},
-   { "score": "100" },
+   {"name": "secret","score": "100" },
    { upsert: true });
 
 
