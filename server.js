@@ -148,6 +148,8 @@ app.post("/api/users", function(req, res) {
   let hash = bcrypt.hashSync(req.body.password, 10);
 
   newUser.password = hash;
+  newUser.logic = 0;
+  newUser.dev = 0;
   newUser.mathScore = 0;
   newUser.score = 0;
   
@@ -183,11 +185,6 @@ app.post("/api/users", function(req, res) {
 // -- > Update fields mathematic
 
 app.put("/api/users/math/update", function(req, res) {
-
-
-  res.header("Access-Control-Allow-Origin", "*");
-
-
 
   if(!req.body.score)
   {
