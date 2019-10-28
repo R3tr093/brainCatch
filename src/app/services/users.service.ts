@@ -18,6 +18,7 @@ export class UsersServicesService {
   userData : any;
   usedName : any;
   userName : string = "Unknow";
+
   isRegistered : boolean = false;
   isLogged : boolean = false;
   userWelcome : boolean = false;
@@ -47,6 +48,7 @@ export class UsersServicesService {
   getUser(param){
     return this.http.get('https://braincatch.herokuapp.com/api/users/' + param).subscribe(
         value => {
+          console.log(value)
           this.userData = value;
 
         },
