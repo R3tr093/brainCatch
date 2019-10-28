@@ -68,6 +68,10 @@ export class MultiplicatedComponent implements OnInit {
     document.getElementById('resetBtn').style.display = " block";
     document.getElementById('countDown').style.display = " block";
 
+   
+    document.getElementById('operation').style.display = "block";
+    document.getElementById('operation').classList.add('slideInLeft')
+
 
     if(this.chain >= 3)
     {
@@ -134,6 +138,11 @@ export class MultiplicatedComponent implements OnInit {
       if(this.isStarted && this.userLife > 0)
       {
 
+        document.getElementById('operation').classList.remove('slideInLeft');
+        document.getElementById('operation').style.display = "none";
+       
+
+        
 
         let value = Number((<HTMLInputElement>document.getElementById("response")).value);
       
@@ -141,7 +150,7 @@ export class MultiplicatedComponent implements OnInit {
   
         if(this.sum * this.operator === value)
         {
-  
+
            this.isResolved = true;
            report.textContent = "";
            report.textContent = " Correct ! ";
@@ -187,7 +196,7 @@ export class MultiplicatedComponent implements OnInit {
            this.chain = this.chain + 1;
   
            this.sum = Number(value);
-  
+           
   
            let erase = (<HTMLInputElement>document.getElementById("response")).value = "";
   
