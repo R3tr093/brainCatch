@@ -140,6 +140,9 @@ app.post("/api/users/logIn", function(req, res) {
 app.post("/api/users", function(req, res) {
 
 
+
+  // check if the name is already registered in the db.
+
   if (!req.body.name)
   {
     handleError(res, "Invalid user input", "Must provide a name.", 400);
@@ -164,6 +167,9 @@ app.post("/api/users", function(req, res) {
     }
   });
  
+
+  // Try to add new user in db
+
   var newUser = req.body;
 
   newUser.createDate = new Date();
