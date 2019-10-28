@@ -234,12 +234,6 @@ export class HomeComponent implements OnInit {
   
         if(!this.userService.isRegistered)
         {
-
-          if(this.userService.isRegistered)
-          {
-            this.router.navigate(['/Menu']);
-          }
-         
           // Wait for a return from the request 
 
           if(this.count < 6000 && !this.userService.isRegistered )
