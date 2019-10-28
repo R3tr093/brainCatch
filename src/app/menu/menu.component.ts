@@ -163,11 +163,15 @@ export class MenuComponent implements OnInit {
       if(this.userService.isDone)
       {
         this.userService.isDone = false;
-        document.getElementById('globalScore').textContent = "Score : " +  this.userService.userData[0].score;
+        document.getElementById('globalScore').textContent = "Score global : " +  this.userService.userData[0].score;
         clearInterval(tryRefresh);
       }
 
     },3000)
 
+  }
+
+  showScore(){
+    this.showModal("Votre score global : " + String(this.userService.userData[0].score),5000);
   }
 }
