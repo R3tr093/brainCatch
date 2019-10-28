@@ -140,37 +140,8 @@ app.post("/api/users/logIn", function(req, res) {
 app.post("/api/users", function(req, res) {
 
 
-
-  // check if the name is already registered in the db.
-
-  if (!req.body.name)
-  {
-    handleError(res, "Invalid user input", "Must provide a name.", 400);
-  }
-
-
-  db.collection(USERS_COLLECTION).find({}).toArray(function(err, docs) {
-    if (err) {
-      handleError(res, err.message, "Failed to get contacts.");
-    } else {
-      res.status(200).json(docs);
-      let i = 0;
-
-      while(i < docs.length)
-      {
-        if(docs[i].name === req.body.name)
-        {
-          handleError(res, "Invalid user input", "Name already used by other user.", 400);
-          
-        }
-        i++;
-      }
-    }
-  });
  
-
-  // Try to add new user in db
-
+  
   var newUser = req.body;
 
   newUser.createDate = new Date();
@@ -184,7 +155,10 @@ app.post("/api/users", function(req, res) {
   newUser.score = 0;
   
 
- 
+  if (!req.body.name)
+  {
+    handleError(res, "Invalid user input", "Must provide a name.", 400);
+  }
 
   if (!req.body.password)
   {
