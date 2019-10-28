@@ -154,7 +154,19 @@ export class MenuComponent implements OnInit {
 
 
   refreshData(){
-    
+
     this.userService.getUser(this.userService.userName);
+
+    let tryRefresh = setInterval(()=>{
+
+      if(this.userService.isDone)
+      {
+        this.userService.isDone = false;
+        document.getElementById('globalScore').textContent = this.userService.userData[0].score;
+        clearInterval(tryRefresh);
+      }
+
+    },3000)
+
   }
 }

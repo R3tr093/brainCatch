@@ -23,6 +23,8 @@ export class UsersServicesService {
   isLogged : boolean = false;
   userWelcome : boolean = false;
 
+  isDone : boolean = false;
+
 
 
   constructor(private http: HttpClient) { }
@@ -48,6 +50,7 @@ export class UsersServicesService {
   getUser(param){
     return this.http.get('https://braincatch.herokuapp.com/api/users/' + param).subscribe(
         value => {
+          this.isDone = true;
           console.log(value)
           this.userData = value;
 
