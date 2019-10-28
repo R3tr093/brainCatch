@@ -26,6 +26,7 @@ export class MenuComponent implements OnInit {
     if(!this.userService.isRegistered && !this.userService.isLogged)
     {
      // window.location.href = "/";
+     
       
     }
 
@@ -49,7 +50,7 @@ export class MenuComponent implements OnInit {
       }
      
     }
-
+    this.refreshData();
     this.randomStyle();
     
 
@@ -162,7 +163,7 @@ export class MenuComponent implements OnInit {
       if(this.userService.isDone)
       {
         this.userService.isDone = false;
-        document.getElementById('globalScore').textContent = this.userService.userData[0].score;
+        document.getElementById('globalScore').textContent = "Score : " +  this.userService.userData[0].score;
         clearInterval(tryRefresh);
       }
 
