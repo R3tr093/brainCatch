@@ -161,8 +161,9 @@ app.post("/api/users", function(req, res) {
         if(docs[i].name === req.body.name)
         {
           handleError(res, "Invalid user input", "Name already used by other user.", 400);
-          i++;
+          
         }
+        i++;
       }
     }
   });
