@@ -164,6 +164,7 @@ export class MenuComponent implements OnInit {
       {
         this.userService.isDone = false;
         document.getElementById('globalScore').textContent = "Score global : " +  this.userService.userData[0].score;
+        this.showScore();
         clearInterval(tryRefresh);
       }
 
