@@ -13,6 +13,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
+  userScore : string;
   userName : string = "Anonyme";
   userData : any;
 
@@ -33,6 +34,7 @@ export class MenuComponent implements OnInit {
     else
     {
       this.userName = this.userService.userData[0].name;
+      this.userScore = String(this.userService.userData[0].score);
 
       this.userData = this.userService.userData;
 
