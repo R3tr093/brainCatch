@@ -17,6 +17,7 @@ export class UsersServicesService {
 
   userData : any;
   usedName : any;
+  userName : string = "Unknow";
   isRegistered : boolean = false;
   isLogged : boolean = false;
   userWelcome : boolean = false;
@@ -98,6 +99,7 @@ export class UsersServicesService {
 
       return this.http.put("https://braincatch.herokuapp.com/api/users/math/update",data,httpOptions,).subscribe(
         value => {
+
           console.log(value)
         },
         error => {
