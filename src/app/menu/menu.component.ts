@@ -66,9 +66,9 @@ export class MenuComponent implements OnInit {
 
     var elemTxt = document.getElementById('modalTxt');
 
-    elemTxt.textContent = "";
+    elemTxt.innerHTML = "";
 
-    elemTxt.textContent = text;
+    elemTxt.innerHTML = text;
 
     var pos = 115;
 
@@ -172,6 +172,7 @@ export class MenuComponent implements OnInit {
   }
 
   showScore(){
-    this.showModal("Votre score global : " + String(this.userService.userData[0].score),5000);
+   
+    this.showModal('Votre score global : <b> ' + String(this.userService.userData[0].score) + ' </b> <br> Math :<b> ' + this.userService.userData[0].mathScore + ' </b> <br> Logique : <b> ' + this.userService.userData[0].logic + ' </b> <br> Programmation : <b>' + this.userService.userData[0].dev + '</b> ',5000);
   }
 }

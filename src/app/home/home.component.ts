@@ -18,14 +18,9 @@ export class HomeComponent implements OnInit {
   aboutOnScreen : boolean = false;
   count : number = 1000;
   userData : any;
- 
-  
-
 
   constructor(private userService : UsersServicesService, private router : Router) {
-   
-    
-    
+
   }
 
   ngOnInit() {
