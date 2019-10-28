@@ -34,7 +34,10 @@ export class MenuComponent implements OnInit {
     else
     {
       this.userName = this.userService.userData[0].name;
+
+     
       this.userService.userName = this.userName;
+      
       this.userScore = String(this.userService.userData[0].score);
 
       this.userData = this.userService.userData;
@@ -149,4 +152,9 @@ export class MenuComponent implements OnInit {
 
   }
 
+
+  refreshData(){
+    
+    this.userService.getUser(this.userService.userName);
+  }
 }

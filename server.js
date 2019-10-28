@@ -49,7 +49,7 @@ function handleError(res, reason, message, code) {
 
 app.get("/api/users", function(req, res) {
   
-  res.header("Access-Control-Allow-Origin", "*");
+ 
   
   db.collection(USERS_COLLECTION).find({}).toArray(function(err, docs) {
     if (err) {
@@ -65,7 +65,7 @@ app.get("/api/users", function(req, res) {
 
 app.get("/api/users/:name", function(req, res) {
   
-  res.header("Access-Control-Allow-Origin", "*");
+ 
 
   let param = String(req.params.name);
 
@@ -93,7 +93,7 @@ app.get("/api/users/:name", function(req, res) {
 app.post("/api/users/logIn", function(req, res) {
   
 
-  res.header("Access-Control-Allow-Origin", "*");
+
 
   if (!req.body.name)
   {
@@ -139,7 +139,7 @@ app.post("/api/users/logIn", function(req, res) {
 
 app.post("/api/users", function(req, res) {
 
-  res.header("Access-Control-Allow-Origin", "*");
+ 
   
   var newUser = req.body;
 

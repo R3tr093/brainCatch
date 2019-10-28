@@ -241,10 +241,8 @@ export class MultiplicatedComponent implements OnInit {
             if(this.currentScore > 0)
             {
 
-
             this.userService.updateFields({"score": this.currentScore, "name" : this.userService.userData[0].name});
-            this.userService.getUser(this.userService.userName);
-
+          
             }
 
 
