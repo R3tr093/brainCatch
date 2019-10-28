@@ -236,13 +236,29 @@ export class HomeComponent implements OnInit {
         {
           // Wait for a return from the request 
 
+          if(this.userService.isRegistered)
+          {
+          this.router.navigate(['/Menu']);
+          }
+
           if(this.count < 6000 && !this.userService.isRegistered )
           {
-            this.postUser();
+            if(!this.userService.isRegistered)
+            {
+              this.postUser();
+            }
+
+            else
+            {
+
             this.count = this.count + 500;
             report = " En attente ..."
             document.getElementById('postSpinner').style.opacity = "1";
             document.getElementById('postReport').textContent = report;
+
+            }
+            
+            
           }
           
           // if we wait so much, return a network error.
