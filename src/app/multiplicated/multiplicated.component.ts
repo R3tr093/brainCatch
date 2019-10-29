@@ -29,6 +29,7 @@ export class MultiplicatedComponent implements OnInit {
 
 
 
+
   // Set a default value like one is useless but if we want to provide more mistake to the user that should be fine
   userLife : number = 1;
 
@@ -68,10 +69,8 @@ export class MultiplicatedComponent implements OnInit {
     document.getElementById('resetBtn').style.display = " block";
     document.getElementById('countDown').style.display = " block";
 
-   
-    document.getElementById('operation').style.display = "block";
-    document.getElementById('operation').classList.add('slideInLeft')
-
+    document.getElementById('operation').classList.add('slideInLeft');
+    document.getElementById('chain').classList.add('slideInLeft');
 
     if(this.chain >= 3)
     {
@@ -139,11 +138,8 @@ export class MultiplicatedComponent implements OnInit {
       {
 
         document.getElementById('operation').classList.remove('slideInLeft');
-        document.getElementById('operation').style.display = "none";
-       
-
-        
-
+        document.getElementById('chain').classList.remove('slideInLeft');
+      
         let value = Number((<HTMLInputElement>document.getElementById("response")).value);
       
         let report = document.getElementById('report');
@@ -276,7 +272,12 @@ export class MultiplicatedComponent implements OnInit {
     let erase = (<HTMLInputElement>document.getElementById("response")).value = "";
     document.getElementById('report').textContent = "";
     document.getElementById('countDown').textContent = " ";
+
+    document.getElementById('operation').classList.add('zoomIn');
+
     
+
+
     this.operator =  Math.floor(Math.random() * 7);
     this.operator = this.operator + 2;
     this.sum = 1;

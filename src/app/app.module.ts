@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 
 import {UsersServicesService} from './services/users.service';
 import { MultiplicatedComponent } from './multiplicated/multiplicated.component';
+import { MemoryComponent } from './memory/memory.component';
 
 const appRoutes: Routes = [
   { path: '',      component: HomeComponent},
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
     HomeComponent,
     MenuComponent,
     DemoComponent,
-    MultiplicatedComponent
+    MultiplicatedComponent,
+    MemoryComponent
   ],
   imports: [
     BrowserModule,
