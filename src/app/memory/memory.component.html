@@ -1,1 +1,60 @@
-<p>memory works!</p>
+<main>
+    
+    <div id="gameMain" class="bordered">
+
+        <h1>Elephant</h1>
+
+        <p class="keyP fontBasic" id="chain">Chaîne actuel : {{chain - 1}}</p>
+
+        <div id="keyDisplayer" class="bordered">
+
+
+           
+        
+            <p class="keyP fontBasic" id="key">{{word}}</p>
+
+            <br><br>
+
+            <p class="keyP fontBasic" id="report">  </p>
+
+            <br><br>
+    
+
+            <div id="wrapInput" class="bordered">
+
+                <label class="fontBasic">Votre réponse  : </label>
+    
+                <input (keydown)="onKeydown($event)" id="userResponse" class="shadow">
+
+            </div>
+
+         
+
+
+
+        </div>
+
+       
+
+    </div>
+    
+    <div id="userBoard" class="bordered">
+
+        <div id="infoGame" title="Règle du jeu">Mémorisez les mots qui s'affichent dans le bon ordre, et réécrivez l'un après l'autre par ordre d'apparition.<br><br> Vous gagnez des points pour votre score après une série de 4 mots compléter, vous gagnez plus de point en complétant la série avant la fin du compte à rebours.</div>
+        
+        <div id="score" title="Votre score.">
+
+            0
+    
+        </div>
+
+        <button (click)="displaySerie()"  id="start">Play</button>
+        <button id="resetBtn">Reset</button>
+        <a routerLink="/Menu" routerLinkActive="active"  id="home" title="Retour au menu ? "></a>
+
+    </div>
+
+    
+
+
+</main>

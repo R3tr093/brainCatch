@@ -62,7 +62,7 @@ export class MultiplicatedComponent implements OnInit {
 
   getOperation()
   {    
-    
+    this.isStarted =true;
     this.isResolved = false;
     this.operation = String(this.sum + " x " + this.operator + " = ? ");
     document.getElementById('start').style.display = "none";
@@ -132,7 +132,7 @@ export class MultiplicatedComponent implements OnInit {
   onKeydown(event) {
     if (event.key === "Enter") {
       
-      this.isStarted =true;
+      
 
       if(this.isStarted && this.userLife > 0)
       {
@@ -148,7 +148,7 @@ export class MultiplicatedComponent implements OnInit {
         {
 
            this.isResolved = true;
-           report.textContent = "";
+           
            report.textContent = " Correct ! ";
            report.style.color = " springgreen";
   
@@ -157,8 +157,6 @@ export class MultiplicatedComponent implements OnInit {
            if(this.chain >= 3 && this.chain < 7)
            {
             
-  
-  
             if(this.countDown > 0)
             {
               this.currentScore = this.currentScore + 100;

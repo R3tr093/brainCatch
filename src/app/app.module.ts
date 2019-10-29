@@ -14,6 +14,8 @@ import { HomeComponent } from './home/home.component';
 
 
 import {UsersServicesService} from './services/users.service';
+import {WordsService} from './services/words.service';
+
 import { MultiplicatedComponent } from './multiplicated/multiplicated.component';
 import { MemoryComponent } from './memory/memory.component';
 
@@ -21,7 +23,8 @@ const appRoutes: Routes = [
   { path: '',      component: HomeComponent},
   { path: 'Demo',      component: DemoComponent},
   { path: 'Menu', component: MenuComponent},
-  { path: 'Multiplicate', component: MultiplicatedComponent}
+  { path: 'Multiplicate', component: MultiplicatedComponent},
+  { path: 'Memory', component: MemoryComponent}
 
 ];
 
@@ -46,7 +49,7 @@ const appRoutes: Routes = [
       { enableTracing: false } // <-- debugging purposes only
     )
   ],
-  providers: [UsersServicesService],
+  providers: [UsersServicesService, WordsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
