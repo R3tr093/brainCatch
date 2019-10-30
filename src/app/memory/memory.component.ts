@@ -73,7 +73,8 @@ export class MemoryComponent implements OnInit {
     
     let random = Math.floor(Math.random() * this.words.length);
 
-    while(this.serie[random] === this.serie.length -1)
+    // Should prevent we don't get two words as the same value
+    while(this.serie[random] === this.words[this.serie.length -1])
     {
       random = Math.floor(Math.random() * this.words.length)
     }
@@ -211,13 +212,17 @@ export class MemoryComponent implements OnInit {
             document.getElementById('report').innerHTML = "Perdu";
             
 
-            if(this.isCountdownActive)
+            if(this.countdown > 0)
             {
               clearInterval(this.interval)
               this.isCountdownActive = false;
               this.countdown = 0;
               document.getElementById('countDown').textContent = "";
             }
+
+            
+
+            
 
             document.getElementById('report').style.color = " red ";
 
@@ -237,7 +242,6 @@ export class MemoryComponent implements OnInit {
             }
 
             //SEND SCORE HERE
-
 
             this.userService.updateFieldsMemory({"score": this.score, "name" : this.userService.userData[0].name});
 
