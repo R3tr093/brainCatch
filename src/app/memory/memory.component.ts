@@ -238,6 +238,11 @@ export class MemoryComponent implements OnInit {
 
             //SEND SCORE HERE
 
+
+            this.userService.updateFieldsMemory({"score": this.score, "name" : this.userService.userData[0].name});
+
+
+
             document.getElementById('start').textContent = "Reset";
 
             this.serieCursor = 0;

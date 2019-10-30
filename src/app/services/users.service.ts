@@ -100,7 +100,7 @@ export class UsersServicesService {
       );
   }
 
-  updateFields(data){
+  updateFieldsMath(data){
 
       return this.http.put("https://braincatch.herokuapp.com/api/users/math/update",data,httpOptions,).subscribe(
         value => {
@@ -114,6 +114,23 @@ export class UsersServicesService {
       
       
     };
+
+
+
+  updateFieldsMemory(data){
+
+    return this.http.put("https://braincatch.herokuapp.com/api/users/memory/update",data,httpOptions,).subscribe(
+      value => {
+
+        console.log(value)
+      },
+      error => {
+        console.log(error)
+      }
+    )
+    
+    
+  };
 
     
   

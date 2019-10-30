@@ -174,6 +174,6 @@ export class MenuComponent implements OnInit {
 
   showScore(){
    
-    this.showModal('Votre score global : <b> ' + String(this.userService.userData[0].score) + ' </b> <br> Math :<b> ' + this.userService.userData[0].mathScore + ' </b> <br> Logique : <b> ' + this.userService.userData[0].logic + ' </b> <br> Programmation : <b>' + this.userService.userData[0].dev + '</b> ',5000);
+    this.showModal('Votre score global : <b> ' + String(this.userService.userData[0].score) + ' </b> <br> Math :<b> ' + this.userService.userData[0].mathScore + ' </b> <br> Logique : <b> ' + this.userService.userData[0].logic + ' </b> <br> Mémoire : <b>' + this.userService.userData[0].memory + '</b> ',5000);
   }
 }
