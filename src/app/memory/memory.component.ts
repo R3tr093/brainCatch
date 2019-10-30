@@ -226,6 +226,13 @@ export class MemoryComponent implements OnInit {
 
             document.getElementById('report').style.color = " red ";
 
+            if(this.score > 0)
+            {
+              //SEND SCORE HERE
+
+              this.userService.updateFieldsMemory({"score": this.score, "name" : this.userService.userData[0].name});
+            }
+
             if(this.score > 0  && this.score < 150)
             {
               document.getElementById('report').innerHTML = "Perdu <br> <em> <span id='result'> Vous avez gagnez  " + String(this.score) + " points c'est pas si mal. </span></em>" ;
@@ -241,9 +248,7 @@ export class MemoryComponent implements OnInit {
               document.getElementById('report').innerHTML = "Perdu <br> <em> <span id='result'> Vous avez gagnez  " + String(this.score) + " points là on se comprend ! </span></em>" ;
             }
 
-            //SEND SCORE HERE
-
-            this.userService.updateFieldsMemory({"score": this.score, "name" : this.userService.userData[0].name});
+           
 
 
 
