@@ -53,6 +53,8 @@ export class MemoryComponent implements OnInit {
 
     let i = 0;
 
+    this.serie = [];
+
     while(i < 2)
     {
       let random = Math.floor(Math.random() * this.words.length);
@@ -104,6 +106,8 @@ export class MemoryComponent implements OnInit {
   // Carrying the user response.
   onKeydown(event) {
 
+    console.log(this.serie)
+
     if (event.key === "Enter" && !this.serieWorking) {
       
       let userResponse = (<HTMLInputElement>document.getElementById('userResponse'));
@@ -117,8 +121,9 @@ export class MemoryComponent implements OnInit {
 
           if(this.responseCursor < this.serie.length && a === b )
           {
-            document.getElementById('report').textContent = "Correct";
+            document.getElementById('report').innerHTML = "Correct";
             this.responseCursor++;
+            
           }
   
           if(this.responseCursor === this.serie.length)
@@ -126,6 +131,17 @@ export class MemoryComponent implements OnInit {
             
             this.responseCursor = 0;
             this.serieCursor = 0;
+            
+            if(this.chain >= 3)
+            {
+              
+              this.score = this.score + 50;
+            
+            }
+
+
+            this.chain++;
+
             this.incSerie();
             this.displaySerie();
            
@@ -134,7 +150,24 @@ export class MemoryComponent implements OnInit {
 
           if( a !== b)
           {
-            document.getElementById('report').textContent = "Faux";
+            document.getElementById('report').innerHTML = "Perdu";
+
+            if(this.score > 0  && this.score < 150)
+            {
+              document.getElementById('report').innerHTML = "Perdu <br> <em> <span id='result'> Vous avez gagnez  " + String(this.score) + " points c'est pas si mal. </span></em>" ;
+            }
+
+            if(this.score > 150  && this.score < 300)
+            {
+              document.getElementById('report').innerHTML = "Perdu <br> <em> <span id='result'> Vous avez gagnez  " + String(this.score) + " points, mais ont pourrait faire mieux. </span></em>" ;
+            }
+
+            if(this.score > 300 )
+            {
+              document.getElementById('report').innerHTML = "Perdu <br> <em> <span id='result'> Vous avez gagnez  " + String(this.score) + " points là on se comprend ! </span></em>" ;
+            }
+
+            document.getElementById('start').textContent = "Reset";
 
             this.serieCursor = 0;
             this.serieWorking = false;
