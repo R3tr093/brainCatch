@@ -139,7 +139,6 @@ export class MemoryComponent implements OnInit {
   // Carrying the user response.
   onKeydown(event) {
 
-    console.log(this.serie)
 
     if (event.key === "Enter" && !this.serieWorking) {
       
