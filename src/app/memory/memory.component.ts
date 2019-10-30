@@ -27,6 +27,8 @@ export class MemoryComponent implements OnInit {
   score : number = 0;
   
   countdown : number;
+  interval : any;
+  isCountdownActive : boolean = false;
 
 
   constructor(private userService : UsersServicesService, private wordService : WordsService ) {
@@ -70,16 +72,23 @@ export class MemoryComponent implements OnInit {
   incSerie(){
     
     let random = Math.floor(Math.random() * this.words.length);
+
+    while(this.serie[random] === this.serie.length -1)
+    {
+      random = Math.floor(Math.random() * this.words.length)
+    }
+
     this.serie.push(this.words[random]);
+
+    this.countdown = this.chain * 4;
     
   }
 
   // Show the serie to the user
   displaySerie(){
 
-    console.log(this.serie)
-
     document.getElementById('report').textContent = "";
+
 
     this.serieWorking = true;
 
@@ -99,6 +108,29 @@ export class MemoryComponent implements OnInit {
     if(this.serieCursor > this.serie.length)
     {
       this.serieWorking = false;
+
+      if(this.chain >= 3 && !this.isCountdownActive)
+      {
+        
+        
+        this.interval = setInterval(()=>{
+
+          document.getElementById('countDown').style.fontSize = "25px";
+          this.isCountdownActive = true;
+          this.countdown = this.countdown - 1;
+          document.getElementById('countDown').textContent = String(this.countdown);
+
+          if(this.countdown === 0 && this.isCountdownActive)
+          {
+            clearInterval(this.interval)
+            this.isCountdownActive = false;
+            this.countdown = 0;
+            document.getElementById('countDown').style.fontSize = "18px";
+            document.getElementById('countDown').textContent = "Pas de bonus temps.";
+          }
+
+        },1000)
+      }
     }
   }
 
@@ -132,11 +164,37 @@ export class MemoryComponent implements OnInit {
             this.responseCursor = 0;
             this.serieCursor = 0;
             
+
             if(this.chain >= 3)
             {
+
+
+              if(this.isCountdownActive)
+              {
+                document.getElementById('countDown').style.fontSize = "18px";
+                document.getElementById('countDown').textContent = " Bonus temps + 50 points.";
+                this.score = this.score + 100;
+              }
+
+              if(!this.isCountdownActive)
+              {
+                this.score = this.score + 50;
+              }
+
+              setTimeout(()=>{
+
+                document.getElementById('countDown').textContent = "";
               
-              this.score = this.score + 50;
-            
+              },2500)
+
+              clearInterval(this.interval)
+              this.isCountdownActive = false;
+              this.countdown = 0;
+
+              
+
+              
+
             }
 
 
@@ -151,6 +209,17 @@ export class MemoryComponent implements OnInit {
           if( a !== b)
           {
             document.getElementById('report').innerHTML = "Perdu";
+            
+
+            if(this.isCountdownActive)
+            {
+              clearInterval(this.interval)
+              this.isCountdownActive = false;
+              this.countdown = 0;
+              document.getElementById('countDown').textContent = "";
+            }
+
+            document.getElementById('report').style.color = " red ";
 
             if(this.score > 0  && this.score < 150)
             {
@@ -166,6 +235,8 @@ export class MemoryComponent implements OnInit {
             {
               document.getElementById('report').innerHTML = "Perdu <br> <em> <span id='result'> Vous avez gagnez  " + String(this.score) + " points là on se comprend ! </span></em>" ;
             }
+
+            //SEND SCORE HERE
 
             document.getElementById('start').textContent = "Reset";
 
